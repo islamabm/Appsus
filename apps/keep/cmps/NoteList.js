@@ -1,15 +1,15 @@
 import NoteTodos from './NoteTodos.js'
 import NoteImg from './NoteImg.js'
 import NoteTxt from './NoteTxt.js'
-
+import { noteService } from '../service/note.service.js'
 export default {
   props: ['notes'],
   template: `
-        <section >
+        <section class="main-notes">
           <ul class="clean-list notes-list ">
             <li class="note-container" v-for="note in notes">
             <button class="remove-todo-btn" @click="remove(note.id)">x</button>
-    
+         <article class="note-container" :style="note.style">
           <Component
           class="note"
 					:is="note.type"
@@ -17,17 +17,8 @@ export default {
 					></Component>
           </li>
           </ul>
-        <!-- <button @click="ActiveTab = 'NoteImg'">image</button>
-        <button @click="ActiveTab = 'NoteTodos'">Todos</button>
-        <button @click="ActiveTab = 'NoteVideo'">Video</button> -->
-        <!-- <input @click="ImageChoosen" v-model="think" name="rate" type="radio" value="ImageNote">
-				<label>Image</label>
-				<input @click="TodosChoosen"   v-model="think" name="rate" type="radio" value="TodosNote">
-				<label>Todos</label>
-				<input @click="VideoChoosen"  v-model="think" name="rate" type="radio" value="VideoNote">
-				<label>Video</label> -->
-
-        </section>
+          </article>
+         </section>
     `,
   // data() {
   //   return {
@@ -36,8 +27,16 @@ export default {
   // },
   methods: {
     remove(noteId) {
-      const noteIdx = this.notes.findIndex((note) => note.id === noteId)
-      this.notes.splice(noteIdx, 1)
+      console.log(noteId)
+      noteService.remove(noteId).then(() => {
+        const idx = this.notes.findIndex((note) => note.id === noteId)
+        this.notes.splice(idx, 1)
+      })
+    },
+  },
+  computed: {
+    backGroundColor() {
+      this.note.style.backgroundColor
     },
   },
 

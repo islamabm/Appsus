@@ -1,7 +1,7 @@
-import MailList from "../cmps/MailList.js"
-import MailFilter from "../cmps/MailFilter.js"
-import MailNav from "../cmps/MailNav.js"
-import MailDetails from "./MailDetails.js"
+import MailList from '../cmps/MailList.js'
+import MailFilter from '../cmps/MailFilter.js'
+import MailNav from '../cmps/MailNav.js'
+import MailDetails from './MailDetails.js'
 
 export default {
   template: `
@@ -33,40 +33,40 @@ export default {
       selectedEmail: null,
       emails: [
         {
-          id: "e101",
-          subject: "Miss you!",
-          body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
+          id: 'e101',
+          subject: 'Miss you!',
+          body: 'Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes',
           isRead: false,
           isStar: false,
           sentAt: 1551133930593,
           removedAt: null,
-          from: "momo@momo.com",
-          to: "user@appsus.com",
+          from: 'momo@momo.com',
+          to: 'user@appsus.com',
         },
         {
-          id: "e102",
-          subject: "Miss you!",
-          body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
+          id: 'e102',
+          subject: 'Miss you!',
+          body: 'Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes',
           isRead: false,
           isStar: false,
           sentAt: 1551133930594,
           removedAt: null,
-          from: "momo@momo.com",
-          to: "user@appsus.com",
+          from: 'momo@momo.com',
+          to: 'user@appsus.com',
         },
         {
-          id: "e103",
-          subject: "Miss you!",
-          body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
+          id: 'e103',
+          subject: 'Miss you!',
+          body: 'Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes',
           isRead: false,
           isStar: false,
           sentAt: 1551133930595,
           removedAt: null,
-          from: "momo@momo.com",
-          to: "user@appsus.com",
+          from: 'momo@momo.com',
+          to: 'user@appsus.com',
         },
       ],
-      filterBy: { title: "" },
+      filterBy: { title: '' },
     }
   },
   methods: {
@@ -74,17 +74,16 @@ export default {
       this.filterBy = filterBy
     },
     showEmailDetails(emailId) {
-      console.log(emailId);
-      this.selectedEmail = this.emails.find(email => email.id === emailId)
-      console.log(this.selectedEmail);
-  },
+      console.log(emailId)
+      this.selectedEmail = this.emails.find((email) => email.id === emailId)
+      console.log(this.selectedEmail)
+    },
   },
   computed: {
     filteredEmails() {
-      const regex = new RegExp(this.filterBy.title, "i")
+      const regex = new RegExp(this.filterBy.title, 'i')
       return this.emails.filter((email) => regex.test(email.title))
     },
-
   },
   components: {
     MailList,

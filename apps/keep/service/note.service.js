@@ -67,8 +67,19 @@ function _createNotes() {
     notes = []
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
+    // notes.push(_createImgNotes())
+    // notes.push(_createImgNotes())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTodosNote())
+    notes.push(_createTodosNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createImgNotes())
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
@@ -78,6 +89,38 @@ function _createNotes() {
 //   note.id = utilService.makeId()
 //   return note
 // }
+
+function _createImgNotes() {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteImg',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00d',
+    },
+    info: {
+      url: 'sprint3images/boook.jpeg',
+      title: 'Bobi and Me',
+    },
+  }
+}
+
+function _createTodosNote() {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteTodos',
+    isPinned: true,
+    info: {
+      title: 'Get my stuff together',
+      todos: [
+        { txt: 'Driving license', doneAt: null },
+        { txt: 'Coding power', doneAt: 187111111 },
+      ],
+    },
+  }
+}
 
 function _createTxtNote() {
   // const note ={

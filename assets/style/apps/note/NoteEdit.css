@@ -1,3 +1,65 @@
-.edit {
+/* .edit {
   margin-block-end: 1em;
+}
+.note-index {
+  display: grid;
+  grid-template-columns: 10px 1fr 10px;
+}
+.notes-list > * {
+  grid-column: 2;
+}
+.note-header {
+  grid-column: 1/-1;
+} */
+
+.main-layout {
+  background-color: rgb(172, 201, 201);
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+}
+.main-layout > *:not(.full) {
+  grid-column: 2;
+}
+/* .main-layout > .full {
+  grid-column: 1 / -1;
+} */
+
+/* .note-header{
+    grid-column: ;
+} */
+/* .main-layout {
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+}
+
+.main-layout > *:not(.full) {
+  grid-column: 2;
+}
+
+.main-layout > .full {
+  grid-column: 1 / -1;
+}
+
+/* CARD LAYOUT */
+
+/* .card-layout {
+  margin-bottom: 130px;
+} */
+.notes-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 250px));
+  gap: 10px;
+}
+.edit-modal {
+  margin: auto;
+}
+.note-txt {
+  color: white;
+}
+.todos-articale {
+  background-color: pink;
+}
+.note-img {
+  border: 0.5px solid green;
+  background-color: white;
 }

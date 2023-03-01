@@ -1,7 +1,7 @@
 export default {
   template: `
-          <header class="note-header">
-           <h1 class="noot-title">Note App</h1>
-        </header>
+        <header class="note-header full">
+            <h1>misterNote</h1>
+</header>
     `,
 }
