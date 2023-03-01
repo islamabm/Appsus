@@ -1,65 +1,102 @@
-import MailList from '../cmps/MailList.js'
-import MailFilter from '../cmps/MailFilter.js'
+import MailList from "../cmps/MailList.js"
+import MailFilter from "../cmps/MailFilter.js"
+import MailNav from "../cmps/MailNav.js"
+import MailDetails from "./MailDetails.js"
 
 export default {
-    template: `
+  template: `
         <header class="mail-header">
             <button>➕</button>
             <h1>misterEmail</h1>
 
             <MailFilter @filter="setFilterBy"/>
         </header>
-        
         <main class="mail-main-content">
-            
-            <nav class="mail-nav">
-            <RouterLink to="/sent"><li><a>Email sent</a></li></RouterLink>
-		    <li><a href="#">About Us</a></li>
-		    <li><a href="#">Projects</a></li>
-		    <li><a href="#">Listings</a></li>
-		    <li><a href="#">Staff Members</a></li>
-		    <li><a href="#">Sometag</a></li>
-		    <li><a href="#">Another Page</a></li>
-		    <li><a href="#">Lorem Ipsum</a></li>
-		    <li><a href="#">Last Page(maybe)</a></li>
-        </nav>
+          <MailNav/>  
 
-        <MailList :emails="filteredEmails"/>
+          <MailList
+          v-if="!selectedEmail"
+          :emails="filteredEmails"
+          @show-details="showEmailDetails"/>
+          
+        </main> 
         
-    </main> 
+        <MailDetails
+         v-if="selectedEmail"
+         :email="selectedEmail" 
+         @hide-details="selectedEmail = null"
+         />
     
     `,
-    data() {
-        return {
-            emails: [
-                {id: 1,title: 'alo',content: 'sadsadsad'},
-                {id: 2,title: 'banana',content: 'sadsadsad1'},
-                {id: 3,title: 'david',content: 'sadsadsad2'},
-                {id: 4,title: 'gamba',content: 'sadsadsad3'},
-            ],
-           filterBy: {title: ''},    
-        }
+  data() {
+    return {
+      selectedEmail: null,
+      emails: [
+        {
+          id: "e101",
+          subject: "Miss you!",
+          body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
+          isRead: false,
+          isStar: false,
+          sentAt: 1551133930593,
+          removedAt: null,
+          from: "momo@momo.com",
+          to: "user@appsus.com",
+        },
+        {
+          id: "e102",
+          subject: "Miss you!",
+          body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
+          isRead: false,
+          isStar: false,
+          sentAt: 1551133930594,
+          removedAt: null,
+          from: "momo@momo.com",
+          to: "user@appsus.com",
+        },
+        {
+          id: "e103",
+          subject: "Miss you!",
+          body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
+          isRead: false,
+          isStar: false,
+          sentAt: 1551133930595,
+          removedAt: null,
+          from: "momo@momo.com",
+          to: "user@appsus.com",
+        },
+      ],
+      filterBy: { title: "" },
+    }
+  },
+  methods: {
+    setFilterBy(filterBy) {
+      this.filterBy = filterBy
     },
-    methods: {
-        setFilterBy(filterBy) {
-            this.filterBy = filterBy
-        }
+    showEmailDetails(emailId) {
+      console.log(emailId);
+      this.selectedEmail = this.emails.find(email => email.id === emailId)
+      console.log(this.selectedEmail);
+  },
+  },
+  computed: {
+    filteredEmails() {
+      const regex = new RegExp(this.filterBy.title, "i")
+      return this.emails.filter((email) => regex.test(email.title))
     },
-    computed: {
-        filteredEmails() {
-            const regex = new RegExp(this.filterBy.title, 'i')
-            return this.emails.filter(email => regex.test(email.title))
-        }
-    },
-    components: {
-        MailList,
-        MailFilter,
-    },
+
+  },
+  components: {
+    MailList,
+    MailFilter,
+    MailNav,
+    MailDetails,
+  },
 }
 
 export const EmailSent = {
-    template: `<section>
+  template: `<section>
         <h3>Our Services are incredible!</h3>
         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis enim rem porro delectus. Quos expedita ipsam repellendus voluptas quas, nam ea eligendi veniam ullam, modi impedit eveniet quia quaerat molestias?</p>
-    </section>`
+    </section>`,
 }
