@@ -1,0 +1,17 @@
+.mail-list {
+    list-style: none;
+}
+
+.mail-list li {
+    /* border: .5px solid black; */
+    box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    display: flex;
+    position: relative;
+}
+
+.mail-list li:hover {
+    border: .5px solid black;
+   cursor: pointer; 
+}

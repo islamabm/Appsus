@@ -1,0 +1,49 @@
+
+.mail-header {
+    background-color: var(--clr2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.5em;
+}
+.mail-header button {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.mail-header input {
+    height: 2.875em;
+    padding: 0;
+    width: 25em;
+    border: 1px solid transparent;
+}
+
+.mail-header h1{
+    margin-top: 1em;
+}
+
+.mail-nav {
+    list-style: none;
+    position: absolute;
+    /* margin-top: 1em; */
+    width: 10em;
+    height: 100vh;
+    background-color: var(--clr2);
+}
+
+.mail-nav > * :not(:first-child) {
+    margin-top: 1em;
+}
+
+.mail-nav li:hover {
+    background-color: gainsboro;
+}
+.mail-main-content{
+        /* background-color: rgb(77, 23, 23); */
+        display: grid;
+        grid-template-columns: 10em 1fr 10em;
+}
+
+.mail-main-content > * {
+    grid-column: 2;
+}
