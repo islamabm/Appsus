@@ -1,7 +1,8 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 import NoteIndex from './apps/keep/pages/NoteIndex.js'
-import EmailIndex, {EmailSent} from './apps/mail/pages/EmailIndex.js'
+import EmailIndex from './apps/mail/pages/EmailIndex.js'
+import mailDetails from './apps/mail/pages/mailDetails.js'
 
 
 
@@ -23,8 +24,8 @@ const routerOptions = {
       component: EmailIndex,
       children: [
         {
-            path: '/sent',
-            component: EmailSent
+            path: '/details/:id',
+            component: mailDetails
         },
     ]
     },

@@ -15,3 +15,16 @@
     border: .5px solid black;
    cursor: pointer; 
 }
+
+.read {
+    background-color: #d5e7ff;
+    color: #202124;
+}
+
+.curr-email {
+    background-color: aquamarine;
+    width: 400px;
+    height: 400px;
+    position: relative;
+    left: calc(50% - 150px);
+}

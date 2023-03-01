@@ -31,7 +31,7 @@
     background-color: var(--clr2);
 }
 
-.mail-nav > * :not(:first-child) {
+.mail-nav li {
     margin-top: 1em;
 }
 

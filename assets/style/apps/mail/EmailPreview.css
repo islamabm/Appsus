@@ -4,14 +4,19 @@
     height: 1em;
 }
 
+
 .email-content {
-    margin-inline-start: 15em;
+    margin-inline-start: 2em;
+}
+
+.email-preview-buttons button {
+    height: .5em;
+    border: 0;
+    background-color: inherit;
 }
 
 .email-preview-buttons {
-    display: flex;
-    height: .5em;
-    margin-left: 27em; 
+    margin-left: 17em;
 }
 
 .email-preview-chackbox {
