@@ -1,0 +1,20 @@
+.email-preview{
+    display: flex;
+    width: 80vw;
+    height: 1em;
+}
+
+.email-content {
+    margin-inline-start: 15em;
+}
+
+.email-preview-buttons {
+    display: flex;
+    height: .5em;
+    margin-left: 27em; 
+}
+
+.email-preview-chackbox {
+    height: 1.3em;
+    width: 1.75em;
+}
