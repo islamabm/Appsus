@@ -6,10 +6,9 @@ export default {
         <section class="todo-list todo-container">
             <ul class="clean-list">
                 <li v-for="todo in todos" :key="todo.id">
-                    <TodosPreview :todo="todo"/>
-                    
+                    <TodosPreview :todo="todo"/>   
                 </li>
-                <button class="remove-todo-btn" @click="remove(todo.id)">x</button>
+                <!-- <button class="remove-todo-btn" @click="remove(todo.id)">x</button> -->
             </ul>
         </section>
     `,

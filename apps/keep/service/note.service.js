@@ -49,20 +49,52 @@ function getEmptyNote(title = '', importance = 250) {
   return { id: '', title, importance }
 }
 
+// function _createNotes() {
+//   let notes = utilService.loadFromStorage(NOTE_KEY)
+//   if (!notes || !notes.length) {
+//     notes = []
+//     notes.push(_createNote('txt', 300))
+//     notes.push(_createNote('canvas', 120))
+//     notes.push(_createNote('audio', 100))
+//     notes.push(_createNote('video', 150))
+//     utilService.saveToStorage(NOTE_KEY, notes)
+//   }
+// }
+
 function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
   if (!notes || !notes.length) {
     notes = []
-    notes.push(_createNote('txt', 300))
-    notes.push(_createNote('canvas', 120))
-    notes.push(_createNote('audio', 100))
-    notes.push(_createNote('video', 150))
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
+    notes.push(_createTxtNote())
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
 
-function _createNote(title, importance = 250) {
-  const note = getEmptyNote(title, importance)
-  note.id = utilService.makeId()
-  return note
+// function _createNote(title, importance = 250) {
+//   const note = getEmptyNote(title, importance)
+//   note.id = utilService.makeId()
+//   return note
+// }
+
+function _createTxtNote() {
+  // const note ={
+
+  //   note.id = utilService.makeId(),
+  // }
+
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteTxt',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00d',
+    },
+    info: {
+      txt: 'Fullstack Me Baby!',
+    },
+  }
 }

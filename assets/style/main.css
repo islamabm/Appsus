@@ -21,3 +21,6 @@
 @import 'apps/note/TodosPreview.css';
 @import 'apps/note/NoteList.css';
 @import 'apps/note/TodosList.css';
+@import 'apps/note/NoteImage.css';
+@import 'apps/note/NoteHeader.css';
+@import 'apps/note/NoteEdit.css';

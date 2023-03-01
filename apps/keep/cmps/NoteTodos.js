@@ -1,13 +1,12 @@
 import TodosList from './TodosList.js'
 
 export default {
+  props: ['info'],
   template: `
         <section class="note-index">
-        <input type="text" placeholder="Enter comma separated list..." v-model="todosStr"/>
-        <button @click="onSave">save</button>
         <TodosList
-      :todos="todos"
-      />
+        :todos="info.todos"
+        />
         </section>
     `,
   data() {

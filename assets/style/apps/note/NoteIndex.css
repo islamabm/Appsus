@@ -1,0 +1,11 @@
+.user-field {
+  display: grid;
+  grid-template-columns: 50px 1fr 50px;
+}
+.user-input {
+  grid-column: 2;
+}
+
+/* .user-btn {
+  width: 10vw;
+} */

@@ -1,0 +1,21 @@
+.note-header {
+  background-color: rgb(61, 57, 57);
+  height: 10vh;
+}
+.noot-title {
+  color: white;
+}
+.txt-done {
+  text-decoration: line-through;
+}
+.note {
+  border: 1px solid black;
+}
+.remove-todo-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.note-container {
+  position: relative;
+}
