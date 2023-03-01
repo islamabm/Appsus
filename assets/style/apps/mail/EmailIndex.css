@@ -22,12 +22,26 @@
     margin-top: 1em;
 }
 
+.yellow {
+    color: yellow;
+}
+.green {
+    color: green;
+}
+.blue {
+    color: blue;
+}
+.red {
+    color: red;
+}
+
 .mail-nav {
     list-style: none;
     position: absolute;
     /* margin-top: 1em; */
     width: 10em;
     height: 100vh;
+    padding-left: 0.5em;
     background-color: var(--clr2);
 }
 

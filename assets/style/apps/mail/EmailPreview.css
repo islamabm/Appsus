@@ -1,6 +1,6 @@
 .email-preview{
     display: flex;
-    width: 80vw;
+    width: 70vw;
     height: 1em;
 }
 
@@ -16,7 +16,8 @@
 }
 
 .email-preview-buttons {
-    margin-left: 17em;
+    /* margin-left: .5em; */
+    display: flex;
 }
 
 .email-preview-chackbox {

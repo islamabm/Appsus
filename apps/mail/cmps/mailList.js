@@ -1,30 +1,40 @@
 import MailPreview from './MailPreview.js'
 
+
 export default {
     props:['emails'],
     template: `   
             <ul class="mail-list" v-for="email in emails">
-                <li @click="openDetails(email.id)" :class="counterClass">
-                    <MailPreview :email="email"/>                
-                <!-- <button hidden @click="showDetails(car.id)">Details</button> -->
-                    <!-- <button @click="remove(car.id)">x</button> -->
+                <li class="counterClass" @click="mark">
+                    <MailPreview :email="email"/>
+                <div class="email-preview-buttons">
+                <button>📩</button>
+                <button @click="deleteEmail(email.id)">🚮</button>
+                <button @click="mark(email.id)">✉</button>
+                <button>🕔</button>
+            </div>    
                 </li>
                  
             </ul>
     `,
-    data() {
-        return{
-        }
-    },
-    methods: {
-            openDetails(emailID){
-            //    this.email.isRead = true
-                this.$emit('show-details', emailID)
-            }
-    },
-    computed: {
 
+    methods: {
+            deleteEmail(emailId) {
+                console.log(emailId);
+                this.$emit('remove',emailId)
+            },
+            mark(emailId) {
+               const email = this.emails.filter(email => email.id === emailId)
+               email.isRead = true 
+               this.$emit('mark',emailId)
+            },
+            counterClass() {
+                return {
+                    read: this.email.isRead,
+                }
+              },
     },
+
     components: {
         MailPreview,
     }
