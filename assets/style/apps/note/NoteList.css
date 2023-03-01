@@ -1,0 +1,7 @@
+.clean-list {
+  list-style-type: none;
+}
+.todo-container {
+  background-color: pink;
+  border: 1px solid black;
+}

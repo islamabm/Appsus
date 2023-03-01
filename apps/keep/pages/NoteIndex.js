@@ -6,21 +6,11 @@ export default {
   template: `
         <section class="note-index">
 
-            <NoteList
-            :notes="notes" 
-             v-if="notes">
-              
+            <NoteList/>
+ 
         </section>
     `,
-  data() {
-    return {
-      notes: [],
-    }
-  },
 
-  created() {
-    noteService.query().then((notes) => (this.notes = notes))
-  },
   components: {
     NoteList,
   },
