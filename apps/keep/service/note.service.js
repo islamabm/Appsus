@@ -16,6 +16,7 @@ export const noteService = {
   // getEmptyNote,
   getEmptyTxtNote,
   getEmptyImgNote,
+  getEmptyTodosNote,
 }
 
 function query(filterBy = {}) {
@@ -57,11 +58,60 @@ function save(note) {
 //   txt: 'Fullstack Me Baby!',
 // },
 function getEmptyTxtNote(txt = '') {
-  return { id: utilService.makeId(), txt }
+  return {
+    createdAt: Date.now(),
+    type: 'NoteTxt',
+    isPinned: true,
+    style: {
+      backgroundColor: 'pink',
+    },
+    info: {
+      txt: txt,
+    },
+  }
 }
 function getEmptyImgNote(url = '') {
-  return { id: utilService.makeId(), url }
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteImg',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00d',
+    },
+    info: {
+      url: url,
+      title: 'Bobi and Me',
+    },
+  }
 }
+function getEmptyTodosNote(todos = []) {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteTodos',
+    isPinned: true,
+    info: {
+      title: 'Get my stuff together',
+      todos: todos,
+    },
+  }
+}
+// function getEmptyTodosNote(todos = '') {
+//   return {
+//     id: utilService.makeId(),
+//     createdAt: Date.now(),
+//     type: 'NoteTodos',
+//     isPinned: true,
+//     info: {
+//       title: 'Get my stuff together',
+//       todos: [
+//         { txt: 'Driving license', doneAt: null },
+//         { txt: 'Coding power', doneAt: 187111111 },
+//       ],
+//     },
+//   }
+// }
 
 // function _createNotes() {
 //   let notes = utilService.loadFromStorage(NOTE_KEY)

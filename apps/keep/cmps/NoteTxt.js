@@ -3,9 +3,9 @@ export default {
   template: `
                  <section  :class="editClass" class="edit-modal">
                  <button @click="editTxt">edit</button>
-                  <input type="text" v-if="isEdit" v-model="txt" placeholder="change the text..">
+                  <input class="edit-modal" type="text" v-if="isEdit" v-model="txt" placeholder="change the text..">
 
-                  </section>
+                 </section>
                  <section class="note-txt note">
                  <p>{{(isEdit)? txt:info.txt}}</p>
                  </section>

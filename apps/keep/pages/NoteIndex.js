@@ -8,30 +8,22 @@ export default {
   template: `
         <NoteHeader></NoteHeader>
         <!-- <NoteNav></NoteNav> -->
-        <AddNote @note-saved="onSaveNote"/>
+        <AddNote 
+        @note-saved="onSaveNote"
+        @note-img-saved="onSaveImgNote"
+        @note-todos-saved="onSaveTodosNote"
+
+        />
         
-        <section class="note-index">
-          <!-- <header></header> -->
-          <!-- <i class="fa-solid fa-image"></i> -->
-          <!-- <i class="fa-solid fa-paperclip"></i> -->
-          <!-- <section class="user-field">
-          <input class="user-input" type="text" :placeholder="msg"  v-model="noteTxt"> -->
-          <!-- <button class="add-btn" @click="onAdd">ADD</button> -->
-          <!-- </section> -->
-  
-          <!-- <section class="user-btns"> -->
-          <!-- <button class="add-btn user-btn" @click="onAdd">ADD</button> -->
-          <!-- <button class="user-btn" @click="msg = 'Enter Img Url...'">I</button>
-          <button class="user-btn" @click="msg = 'Enter txt...'">T</button>
-          <button class="user-btn" @click="msg = 'Enter comma separated list...'">D</button>
-          </section> -->
+        <!-- <section class="note-index"> -->
+
           <section class="notes-container">
              <NoteList 
              v-if="notes"
              :notes="notes" />
              </section>
              
-        </section>
+        <!-- </section> -->
     `,
   data() {
     return {
@@ -41,8 +33,23 @@ export default {
     }
   },
   methods: {
-    onSaveNote(newNote) {
-      this.notes.unshift(newNote)
+    onSaveNote(txt) {
+      const note = noteService.getEmptyTxtNote(txt)
+      noteService.save(note).then((savedNote) => {
+        this.notes.unshift(savedNote)
+      })
+    },
+    onSaveImgNote(url) {
+      const note = noteService.getEmptyImgNote(url)
+      noteService.save(note).then((savedNote) => {
+        this.notes.unshift(savedNote)
+      })
+    },
+    onSaveTodosNote(todos) {
+      const note = noteService.getEmptyTodosNote(todos)
+      noteService.save(note).then((savedNote) => {
+        this.notes.unshift(savedNote)
+      })
     },
   },
 

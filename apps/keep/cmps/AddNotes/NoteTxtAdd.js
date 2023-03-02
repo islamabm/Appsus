@@ -1,14 +1,15 @@
 export default {
   template: `
-  
-       <!-- <form @submit.prevent="save"> -->
-       <input type="text" v-model="txt" placeholder="Enter a text..." autofocus />
-       <!-- <button>Save</button>
-          </form> -->
+       <input type="text" v-model="txt" @input="AddTxt" placeholder="Enter a text..." autofocus />
     `,
   data() {
     return {
       txt: '',
     }
+  },
+  methods: {
+    AddTxt() {
+      this.$emit('AddTxt', this.txt)
+    },
   },
 }
