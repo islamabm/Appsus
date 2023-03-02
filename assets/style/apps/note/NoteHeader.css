@@ -80,3 +80,9 @@ article {
   width: 25em;
   border: 1px solid transparent;
 }
+.add-note-component {
+  margin-bottom: 1em;
+}
+.trash-icon {
+  width: 15px;
+}

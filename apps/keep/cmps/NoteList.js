@@ -9,7 +9,8 @@ export default {
         <section class="main-notes">
           <ul class="clean-list notes-list ">
             <li class="note-container" v-for="note in notes">
-            <button class="remove-todo-btn" @click="remove(note.id)">x</button>
+            <button class="remove-todo-btn" @click="remove(note.id)">
+              <img class="trash-icon" src="icons/trash.png" /></button>
          <article class="note-container" :style="note.style">
           <Component
           class="note"
