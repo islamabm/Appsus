@@ -1,9 +1,7 @@
 .email-preview{
     display: flex;
-    width: 70vw;
     height: 1em;
 }
-
 
 .email-content {
     margin-inline-start: 2em;
@@ -23,4 +21,10 @@
 .email-preview-chackbox {
     height: 1.3em;
     width: 1.75em;
+}
+
+.email-subject {
+    width: 168px;
+    height: 20px;
+    overflow: hidden;
 }

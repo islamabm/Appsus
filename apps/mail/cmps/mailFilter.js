@@ -1,13 +1,13 @@
 export default {
   template: `
             <div class="search-div">
-              
-              <input v-model="filterBy.title" type="text" name="search" placeholder="Search mail"/>
+              <img class="search-img" src="/icons/search-icon.png">
+              <input @input="filter" v-model="filterBy.body" type="text" name="search" placeholder="Search mail"/>
             </div>
             `,
   data() {
     return {
-      filterBy: { title: "" },
+      filterBy: { body: "" },
     }
   },
   methods: {

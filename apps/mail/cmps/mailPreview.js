@@ -5,7 +5,7 @@ export default {
     template: `
         <article class="email-preview">
             <input class="email-preview-chackbox" type="checkbox" id="mark" name="mark">
-            <p>{{ email.subject }}</p>
+            <p class="email-subject">{{ email.from }}</p>
             <p class="email-content">
             <LongTxt :txt="email.body"/>
             </p> 

@@ -1,5 +1,6 @@
 import MailPreview from "./MailPreview.js"
 import MailCreate from "./MailCreate.js"
+import {svgService} from "../service/SVG.service.js"
 
 export default {
   props: ["emails"],
@@ -9,10 +10,14 @@ export default {
                     <MailPreview :email="email"/>
                 <div class="email-preview-buttons">
                 <button>📩</button>
-                <button @click="deleteEmail(email.id)">🚮</button>
+                <button @click="deleteEmail(email.id)">
+                  <div className="trash" 
+                  v-html="getSvg('trash')">
+                  </div>
+                </button>
                 <button @click="mark(email.id)">✉</button>
                 <button>🕔</button>
-            </div>    
+                </div>    
                 </li>
                  
             </ul>
@@ -21,7 +26,7 @@ export default {
   methods: {
     deleteEmail(emailId) {
       console.log(emailId)
-      this.$emit("remove", emailId)
+      this.$emit("deleteEmail", emailId)
     },
     mark(emailId) {
       const email = this.emails.filter((email) => email.id === emailId)
@@ -32,17 +37,14 @@ export default {
     openCloseModal() {
         console.log('hi');
     },
+    getSvg(iconName) {
+      return svgService.getMailSvg(iconName)
   },
-  computed: {
-    counterClass() {
-      return {
-        read: this.email.isRead,
-      }
-    },
   },
-
   components: {
     MailPreview,
     MailCreate,
+    svgService,
+
   },
 }

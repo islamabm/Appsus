@@ -4,30 +4,18 @@ import MailNav from "../cmps/MailNav.js"
 import MailDetails from "./MailDetails.js"
 import MailCreate from "../cmps/MailCreate.js"
 
+import {svgService} from "../service/SVG.service.js"
 import { mailService } from '../service/mail.service.js'
-import {
-  showErrorMsg,
-  showSuccessMsg,
-} from '../../../services/event-bus.service.js'
+import {showSuccessMsg} from '../../../services/event-bus.service.js'
+import { utilService } from "../../../services/util.service.js"
 
 export default {
   template: `
         <header class="mail-header">
-            <button>➕</button>
-            <h1>
-              MisterEmail
-            <!-- <span class="blue">M</span>
-            <span class="red">i</span>
-            <span class="yellow">s</span>
-            <span class="blue">t</span>
-            <span class="green">e</span>
-            <span class="red">r</span>
-            <span class="blue">E</span>
-            <span class="red">m</span>
-            <span class="yellow">a</span>
-            <span class="blue">i</span>
-            <span class="green">l</span> -->
-          </h1>
+            <!-- <div className="location" 
+                v-html="getSvg('location')">
+                </div> -->
+            <h1>MisterEmail</h1>
 
             <MailFilter @filter="setFilterBy"/>
         </header>
@@ -36,7 +24,7 @@ export default {
           <MailCreate @addNewEmail="addNewEmail" @closeModal="closeModal" v-if="isModalOpen"/>
 
           <MailList
-          @remove="removeEmail"
+          @deleteEmail="deleteEmail"
           @mark="markAsUnRead"
           :emails="filteredEmails"/>
           
@@ -57,6 +45,9 @@ export default {
     }
   },
   methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    },  
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
@@ -79,12 +70,12 @@ export default {
     },
     addNewEmail(to,title,body) {
       const newEmail = {
-        id: "e109",
+        id: utilService.makeId(),
         subject: title,
         body:  body,
         isRead: false,
         isStar: false,
-        sentAt: 1551133930595,
+        sentAt: Date.now(),
         removedAt: null,
         from: "momo@momo.com",
         to: to,
@@ -94,13 +85,19 @@ export default {
       .then(() => {
         showSuccessMsg('Email Added')
     })
-    }
-
+    },
+    deleteEmail(emailId) {
+      mailService.remove(emailId).then(() => {
+        const idx = this.emails.findIndex((email) => email.id === emailId)
+        this.emails.splice(idx, 1)
+       showSuccessMsg('Email Deleted')
+    })
+  },
   },
   computed: {
     filteredEmails() {
-      const regex = new RegExp(this.filterBy.title, 'i')
-      return this.emails.filter((email) => regex.test(email.title))
+      const regex = new RegExp(this.filterBy.body, 'i')
+      return this.emails.filter((email) => regex.test(email.body))
     },
   },
   created() {
@@ -114,5 +111,6 @@ export default {
     MailNav,
     MailDetails,
     MailCreate,
+    svgService,
   },
 }
