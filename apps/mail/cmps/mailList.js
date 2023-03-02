@@ -1,11 +1,11 @@
-import MailPreview from './MailPreview.js'
-
+import MailPreview from "./MailPreview.js"
+import MailCreate from "./MailCreate.js"
 
 export default {
-    props:['emails'],
-    template: `   
+  props: ["emails"],
+  template: `   
             <ul class="mail-list" v-for="email in emails">
-                <li class="counterClass" @click="mark">
+                <li @click="mark(email.id)">
                     <MailPreview :email="email"/>
                 <div class="email-preview-buttons">
                 <button>📩</button>
@@ -18,24 +18,31 @@ export default {
             </ul>
     `,
 
-    methods: {
-            deleteEmail(emailId) {
-                console.log(emailId);
-                this.$emit('remove',emailId)
-            },
-            mark(emailId) {
-               const email = this.emails.filter(email => email.id === emailId)
-               email.isRead = true 
-               this.$emit('mark',emailId)
-            },
-            counterClass() {
-                return {
-                    read: this.email.isRead,
-                }
-              },
+  methods: {
+    deleteEmail(emailId) {
+      console.log(emailId)
+      this.$emit("remove", emailId)
     },
+    mark(emailId) {
+      const email = this.emails.filter((email) => email.id === emailId)
+      email.isRead = true
+      console.log(emailId)
+      this.$emit("mark", emailId)
+    },
+    openCloseModal() {
+        console.log('hi');
+    },
+  },
+  computed: {
+    counterClass() {
+      return {
+        read: this.email.isRead,
+      }
+    },
+  },
 
-    components: {
-        MailPreview,
-    }
+  components: {
+    MailPreview,
+    MailCreate,
+  },
 }

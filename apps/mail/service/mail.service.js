@@ -35,50 +35,27 @@ function get(emailId) {
 function _createEmails() {
   let emails = utilService.loadFromStorage(EMAIL_KEY)
   if (!emails || !emails.length) {
-    emails = [ {
-      id: "e101",
-      subject: "Miss you!",
-      body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
-      isRead: false,
-      isStar: false,
-      sentAt: 1551133930593,
-      removedAt: null,
-      from: "momo@momo.com",
-      to: "user@appsus.com",
-    },
-    {
-      id: "e102",
-      subject: "Miss you!",
-      body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
-      isRead: false,
-      isStar: false,
-      sentAt: 1551133930594,
-      removedAt: null,
-      from: "momo@momo.com",
-      to: "user@appsus.com",
-    },
-    {
-      id: "e103",
-      subject: "Miss you!",
-      body: "Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes Would love to catch up sometimes",
-      isRead: false,
-      isStar: false,
-      sentAt: 1551133930595,
-      removedAt: null,
-      from: "momo@momo.com",
-      to: "user@appsus.com",
-    },
-  ]
-
+    emails = []
+    for(var i = 0 ; i <= 5; i++){
+      emails.push(_createEmail())
+    }
   utilService.saveToStorage(EMAIL_KEY, emails)
 }
 }
 
-// function _createEmail(title, content = utilService.makeLorem()) {
-//   const email = getMail(title, content)
-//   email.id = utilService.makeId()
-//   return email
-// }
+function _createEmail() {
+  return {
+    id: utilService.makeId(),
+    subject: utilService.makeLorem(2),
+    body: utilService.makeLorem(),
+    isRead: false,
+    isStar: false,
+    sentAt: Date.now(),
+    removedAt: null,
+    from: "momo@momo.com",
+    to: "user@appsus.com",
+  }
+}
 
 function getMail(title = "", content = "") {
   return { id: "", title, content }

@@ -1,10 +1,10 @@
 
 .mail-header {
-    background-color: var(--clr2);
+    background-color: rgb(246, 248, 252);
+
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    height: 3.5em;
+    height: 3.6em;
 }
 .mail-header button {
     width: 1.5em;
@@ -12,14 +12,25 @@
 }
 
 .mail-header input {
-    height: 2.875em;
+    /* border-radius: 8px; */
+    /* margin-left: 100px; */
+    height: 3.3em;
+    border: none;
+    background-color: rgb(237, 243, 251);
+}
+.search-div {
+    border-radius: 8px;
+    margin-left: 120px;
+    height: 3.3em;
     padding: 0;
     width: 25em;
-    border: 1px solid transparent;
+    background-color: rgb(237, 243, 251);
+
 }
 
 .mail-header h1{
     margin-top: 1em;
+    margin-left: 10px;
 }
 
 .yellow {
@@ -38,24 +49,25 @@
 .mail-nav {
     list-style: none;
     position: absolute;
-    /* margin-top: 1em; */
     width: 10em;
     height: 100vh;
     padding-left: 0.5em;
-    background-color: var(--clr2);
+    background-color:  rgb(246, 248, 252);
 }
 
 .mail-nav li {
-    margin-top: 1em;
+    margin-top: .5em;
+    border-radius: 10px;
+    margin-right: .5em;
+    
 }
 
 .mail-nav li:hover {
-    background-color: gainsboro;
+    background-color: rgba(225, 225, 225, 0.784);
 }
 .mail-main-content{
-        /* background-color: rgb(77, 23, 23); */
-        display: grid;
-        grid-template-columns: 10em 1fr 10em;
+    display: grid;
+    grid-template-columns: 10em 1fr 10em;
 }
 
 .mail-main-content > * {
