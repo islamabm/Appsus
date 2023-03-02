@@ -1,6 +1,7 @@
 import NoteTodos from './NoteTodos.js'
 import NoteImg from './NoteImg.js'
 import NoteTxt from './NoteTxt.js'
+
 import { noteService } from '../service/note.service.js'
 export default {
   props: ['notes'],

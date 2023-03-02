@@ -2,13 +2,14 @@ import { noteService } from '../service/note.service.js'
 
 import NoteList from '../cmps/NoteList.js'
 import NoteHeader from '../cmps/NoteHeader.js'
-
+// import AddNote from '../cmps/AddNote.js'
 export default {
   template: `
         <NoteHeader></NoteHeader>
+        <!-- <AddNote @note-saved="onSaveNote"/> -->
         <section class="note-index">
           <!-- <header></header> -->
-
+          <!-- <i class="fa-solid fa-image"></i> -->
          
           <section class="user-field">
           <input class="user-input" type="text" :placeholder="msg">
@@ -26,100 +27,21 @@ export default {
              v-if="notes"
              :notes="notes" />
              </section>
+             
         </section>
     `,
   data() {
     return {
       msg: 'Enter...',
       notes: [],
-      // notes: [
-      //   {
-      //     id: 'n102',
-      //     type: 'NoteImg',
-      //     isPinned: false,
-      //     info: {
-      //       url: 'sprint3image/boook.jpeg',
-      //       title: 'Bobi and Me',
-      //     },
-      //     style: {
-      //       backgroundColor: '#00d',
-      //     },
-      //   },
-      //   {
-      //     id: 'n101',
-      //     createdAt: 1112222,
-      //     type: 'NoteTxt',
-      //     isPinned: true,
-      //     style: {
-      //       backgroundColor: '#00d',
-      //     },
-      //     info: {
-      //       txt: 'Fullstack Me Baby!',
-      //     },
-      //   },
-      //   {
-      //     id: 'n101',
-      //     createdAt: 1112222,
-      //     type: 'NoteTxt',
-      //     isPinned: true,
-      //     style: {
-      //       backgroundColor: '#00d',
-      //     },
-      //     info: {
-      //       txt: 'Fullstack Me Baby!',
-      //     },
-      //   },
-      //   {
-      //     id: 'n102',
-      //     type: 'NoteImg',
-      //     isPinned: false,
-      //     info: {
-      //       url: 'sprint3image/boook.jpeg',
-      //       title: 'Bobi and Me',
-      //     },
-      //     style: {
-      //       backgroundColor: '#00d',
-      //     },
-      //   },
-      //   {
-      //     id: 'n102',
-      //     type: 'NoteImg',
-      //     isPinned: false,
-      //     info: {
-      //       url: 'sprint3image/boook.jpeg',
-      //       title: 'Bobi and Me',
-      //     },
-      //     style: {
-      //       backgroundColor: '#00d',
-      //     },
-      //   },
-      //   {
-      //     id: 'n103',
-      //     type: 'NoteTodos',
-      //     isPinned: false,
-      //     info: {
-      //       title: 'Get my stuff together',
-      //       todos: [
-      //         { txt: 'Driving license', doneAt: null },
-      //         { txt: 'Coding power', doneAt: 187111111 },
-      //       ],
-      //     },
-      //   },
-      //   {
-      //     id: 'n103',
-      //     type: 'NoteTodos',
-      //     isPinned: false,
-      //     info: {
-      //       title: 'Get my stuff together',
-      //       todos: [
-      //         { txt: 'learning javascript', doneAt: null },
-      //         { txt: 'learning css', doneAt: 187111111 },
-      //       ],
-      //     },
-      //   },
-      // ],
     }
   },
+  methods: {
+    onSaveNote(newNote) {
+      this.notes.unshift(newNote)
+    },
+  },
+
   created() {
     noteService.query().then((notes) => (this.notes = notes))
   },
@@ -127,5 +49,6 @@ export default {
   components: {
     NoteList,
     NoteHeader,
+    // AddNote,
   },
 }

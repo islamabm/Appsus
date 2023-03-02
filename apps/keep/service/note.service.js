@@ -13,7 +13,8 @@ export const noteService = {
   get,
   remove,
   save,
-  getEmptyNote,
+  // getEmptyNote,
+  getEmptyTxtNote,
 }
 
 function query(filterBy = {}) {
@@ -44,9 +45,18 @@ function save(note) {
     return storageService.post(NOTE_KEY, note)
   }
 }
-
-function getEmptyNote(title = '', importance = 250) {
-  return { id: '', title, importance }
+// id: utilService.makeId(),
+// createdAt: Date.now(),
+// type: 'NoteTxt',
+// isPinned: true,
+// style: {
+//   backgroundColor: '#00d',
+// },
+// info: {
+//   txt: 'Fullstack Me Baby!',
+// },
+function getEmptyTxtNote(txt = '') {
+  return { id: utilService.makeId(), txt }
 }
 
 // function _createNotes() {
@@ -67,8 +77,6 @@ function _createNotes() {
     notes = []
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
-    // notes.push(_createImgNotes())
-    // notes.push(_createImgNotes())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
@@ -100,7 +108,7 @@ function _createImgNotes() {
       backgroundColor: '#00d',
     },
     info: {
-      url: 'sprint3images/boook.jpeg',
+      url: 'https://sb.kaleidousercontent.com/67418/992x558/7632960ff9/people.png',
       title: 'Bobi and Me',
     },
   }
