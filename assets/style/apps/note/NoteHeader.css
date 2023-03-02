@@ -6,11 +6,11 @@
   height: 1.5em;
 }
 
-@media (max-width: 700px) {
+/* @media (max-width: 700px) {
   .add-note-component {
     margin-left: 0;
   }
-}
+} */
 .note-header input {
   height: 2.875em;
   padding: 0;

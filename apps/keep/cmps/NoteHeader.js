@@ -1,4 +1,4 @@
-import { svgService } from '../../../services/SVG.service.js'
+// import { svgService } from '../../../services/SVG.service.js'
 
 export default {
   template: `
@@ -21,9 +21,9 @@ export default {
 </header>
     `,
 
-  methods: {
-    getSvg(iconName) {
-      return svgService.getSvg(iconName)
-    },
-  },
+  //   methods: {
+  //     getSvg(iconName) {
+  //       return svgService.getSvg(iconName)
+  //     },
+  //   },
 }

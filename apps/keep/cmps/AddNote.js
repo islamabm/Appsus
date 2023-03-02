@@ -13,8 +13,8 @@ export default {
           <Component
           @AddTxt="onAddTxt"
           @AddTodos="onAddTodos"
-          @AddUrl="onAddUrl"
           @AddVideoUrl="onAddVideoUrl"
+          @AddUrl="onAddUrl"
           class="note"
 	      :is="selectedNote"
           :info="note.info"

@@ -48,7 +48,7 @@ function _createEmail() {
     body: utilService.makeLorem(),
     isRead: false,
     isStar: false,
-    sentAt: Date.now().getDay(),
+    sentAt: Date.now(),
     removedAt: null,
     from: 'momo@momo.com',
     to: 'user@appsus.com',
