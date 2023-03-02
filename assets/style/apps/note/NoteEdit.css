@@ -96,3 +96,14 @@
   border-top: 1px solid gray;
   /* border-radius: 50%; */
 }
+.notes-list li {
+  background-color: aqua;
+}
+/* .remove-todo-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.note-container {
+  position: relative;
+} */
