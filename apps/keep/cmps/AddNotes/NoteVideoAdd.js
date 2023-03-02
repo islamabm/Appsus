@@ -10,7 +10,6 @@ export default {
   methods: {
     AddVideoUrl() {
       this.$emit('AddVideoUrl', this.vUrl)
-      this.vUrl = ''
     },
   },
 }

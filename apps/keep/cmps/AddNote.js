@@ -22,10 +22,12 @@ export default {
 		 ></Component>
        <button>Save</button>
           </form>
+          <section class="display-btns">
           <button title="image" class="user-btn" @click="selectedNote = 'NoteImgAdd'">📷</button>
           <button title="txt" class="user-btn" @click="selectedNote = 'NoteTxtAdd'">✏</button>
           <button title="video" class="user-btn" @click="selectedNote = 'NoteVideoAdd'">🎥</button>
           <button title="todos" class="user-btn" @click="selectedNote = 'NoteTodosAdd'">📃</button>
+          </section>
          </div>
  </section>
 

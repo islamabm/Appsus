@@ -1,3 +1,5 @@
+import { svgService } from '../../../services/SVG.service.js'
+
 export default {
   template: `
         <header class="note-header">
@@ -13,6 +15,15 @@ export default {
             <span class="yellow">t</span>
             <span class="green">e</span>
             </h1>
+            <!-- <div className="img" 
+                v-html="getSvg('img')">
+                </div> -->
 </header>
     `,
+
+  methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    },
+  },
 }
