@@ -15,6 +15,7 @@ export const noteService = {
   save,
   // getEmptyNote,
   getEmptyTxtNote,
+  getEmptyImgNote,
 }
 
 function query(filterBy = {}) {
@@ -58,6 +59,9 @@ function save(note) {
 function getEmptyTxtNote(txt = '') {
   return { id: utilService.makeId(), txt }
 }
+function getEmptyImgNote(url = '') {
+  return { id: utilService.makeId(), url }
+}
 
 // function _createNotes() {
 //   let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -75,12 +79,12 @@ function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
   if (!notes || !notes.length) {
     notes = []
-    notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createTodosNote())
@@ -142,7 +146,7 @@ function _createTxtNote() {
     type: 'NoteTxt',
     isPinned: true,
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: 'pink',
     },
     info: {
       txt: 'Fullstack Me Baby!',

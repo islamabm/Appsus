@@ -21,11 +21,6 @@ export default {
           </article>
          </section>
     `,
-  // data() {
-  //   return {
-
-  //   }
-  // },
   methods: {
     remove(noteId) {
       console.log(noteId)
@@ -33,11 +28,6 @@ export default {
         const idx = this.notes.findIndex((note) => note.id === noteId)
         this.notes.splice(idx, 1)
       })
-    },
-  },
-  computed: {
-    backGroundColor() {
-      this.note.style.backgroundColor
     },
   },
 
