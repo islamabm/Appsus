@@ -13,7 +13,9 @@ export const noteService = {
   get,
   remove,
   save,
-  getEmptyNote,
+  // getEmptyNote,
+  getEmptyTxtNote,
+  getEmptyImgNote,
 }
 
 function query(filterBy = {}) {
@@ -44,9 +46,21 @@ function save(note) {
     return storageService.post(NOTE_KEY, note)
   }
 }
-
-function getEmptyNote(title = '', importance = 250) {
-  return { id: '', title, importance }
+// id: utilService.makeId(),
+// createdAt: Date.now(),
+// type: 'NoteTxt',
+// isPinned: true,
+// style: {
+//   backgroundColor: '#00d',
+// },
+// info: {
+//   txt: 'Fullstack Me Baby!',
+// },
+function getEmptyTxtNote(txt = '') {
+  return { id: utilService.makeId(), txt }
+}
+function getEmptyImgNote(url = '') {
+  return { id: utilService.makeId(), url }
 }
 
 // function _createNotes() {
@@ -65,10 +79,19 @@ function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
   if (!notes || !notes.length) {
     notes = []
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
+    // notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
+    notes.push(_createTodosNote())
+    notes.push(_createTodosNote())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
+    notes.push(_createImgNotes())
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
@@ -78,6 +101,38 @@ function _createNotes() {
 //   note.id = utilService.makeId()
 //   return note
 // }
+
+function _createImgNotes() {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteImg',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00d',
+    },
+    info: {
+      url: 'https://sb.kaleidousercontent.com/67418/992x558/7632960ff9/people.png',
+      title: 'Bobi and Me',
+    },
+  }
+}
+
+function _createTodosNote() {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteTodos',
+    isPinned: true,
+    info: {
+      title: 'Get my stuff together',
+      todos: [
+        { txt: 'Driving license', doneAt: null },
+        { txt: 'Coding power', doneAt: 187111111 },
+      ],
+    },
+  }
+}
 
 function _createTxtNote() {
   // const note ={
@@ -91,7 +146,7 @@ function _createTxtNote() {
     type: 'NoteTxt',
     isPinned: true,
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: 'pink',
     },
     info: {
       txt: 'Fullstack Me Baby!',

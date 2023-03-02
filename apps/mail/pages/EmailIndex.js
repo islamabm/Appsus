@@ -5,7 +5,10 @@ import MailDetails from "./MailDetails.js"
 import MailCreate from "../cmps/MailCreate.js"
 
 import { mailService } from '../service/mail.service.js'
-import { showErrorMsg, showSuccessMsg } from '../../../services/event-bus.service.js'
+import {
+  showErrorMsg,
+  showSuccessMsg,
+} from '../../../services/event-bus.service.js'
 
 export default {
   template: `
@@ -54,25 +57,13 @@ export default {
     }
   },
   methods: {
-
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
     showEmailDetails(emailId) {
-      console.log(emailId);
-      this.selectedEmail = this.emails.find(email => email.id === emailId)
-      console.log(this.selectedEmail);
-  },
-    removeEmail(emailId) {
-    mailService.remove(emailId)
-        .then(() => {
-            const idx = this.emails.findIndex(email => email.id === emailId)
-            this.emails.splice(idx, 1)
-            showSuccessMsg('Email removed')
-        })
-        .catch(err => {
-            showErrorMsg('Email remove failed')
-        })
+      console.log(emailId)
+      this.selectedEmail = this.emails.find((email) => email.id === emailId)
+      console.log(this.selectedEmail)
     },
     markAsUnRead(emailId) {
       console.log(emailId);
@@ -108,7 +99,7 @@ export default {
   },
   computed: {
     filteredEmails() {
-      const regex = new RegExp(this.filterBy.title, "i")
+      const regex = new RegExp(this.filterBy.title, 'i')
       return this.emails.filter((email) => regex.test(email.title))
     },
   },

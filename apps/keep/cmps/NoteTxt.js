@@ -7,8 +7,8 @@ export default {
 
                   </section>
                  <section class="note-txt note">
-                  <p>{{(isEdit)? txt:info.txt}}</p>
-                   </section>
+                 <p>{{(isEdit)? txt:info.txt}}</p>
+                 </section>
  `,
 
   data() {
@@ -20,6 +20,7 @@ export default {
   methods: {
     editTxt() {
       this.isEdit = true
+      console.log(info.style.backgroundColor)
     },
   },
   computed: {
