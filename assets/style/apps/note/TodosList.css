@@ -10,3 +10,11 @@
 input {
   padding: 0;
 }
+.todos-txt {
+  cursor: pointer;
+}
+/* todos-txt">{{todo.txt}}</h5><span class="remove-todo-text */
+
+/* .remove-todo-text {
+  float: right;
+} */

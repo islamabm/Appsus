@@ -2,7 +2,7 @@ export default {
   props: ['todo'],
   template: `
         <article class="todo-preview">
-         <h5 :class="txtClass" @click="todoDone">{{todo.txt}}</h5>
+         <h5 @click="todoDone" :class="txtClass" class="todos-txt">{{todo.txt}}</h5>
          <h5 v-if:="todo.doneAt">{{todo.doneAt}}</h5>
         </article>
     `,

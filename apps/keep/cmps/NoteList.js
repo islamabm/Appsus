@@ -11,7 +11,7 @@ export default {
             <li class="note-container" v-for="note in notes">
             <button class="remove-todo-btn" @click="remove(note.id)">
               <img class="trash-icon" src="icons/trash.png" /></button>
-         <article class="note-container" :style="note.style">
+         <!-- <article class="note-container" :style="note.style"> -->
           <Component
           class="note"
 					:is="note.type"
@@ -19,7 +19,7 @@ export default {
 					></Component>
           </li>
           </ul>
-          </article>
+          <!-- </article> -->
          </section>
     `,
   methods: {
@@ -38,7 +38,3 @@ export default {
     NoteTxt,
   },
 }
-// setFilterBy(filterBy) {
-//   this.filterBy = filterBy
-// }
-// },

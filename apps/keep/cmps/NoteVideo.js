@@ -9,9 +9,4 @@ export default {
             </video>
             </section>
         `,
-  //   data() {
-  //     return {
-  //       url: '',
-  //     }
-  //   },
 }
