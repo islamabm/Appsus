@@ -4,7 +4,7 @@ import MailNav from "../cmps/MailNav.js"
 import MailDetails from "./MailDetails.js"
 import MailCreate from "../cmps/MailCreate.js"
 
-import {svgService} from "../service/SVG.service.js"
+import {svgService} from "../../../services/SVG.service.js"
 import { mailService } from '../service/mail.service.js'
 import {showSuccessMsg} from '../../../services/event-bus.service.js'
 import { utilService } from "../../../services/util.service.js"

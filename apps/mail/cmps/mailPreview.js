@@ -9,6 +9,7 @@ export default {
             <p class="email-content">
             <LongTxt :txt="email.body"/>
             </p> 
+            <span></span>
 
         </article>
     `,

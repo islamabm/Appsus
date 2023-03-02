@@ -1,4 +1,4 @@
-import {svgService} from "../service/SVG.service.js"
+import {svgService} from "../../../services/SVG.service.js"
 
 export default {
   template: `
