@@ -1,11 +1,18 @@
 export default {
   template: `
-            <!-- <label v-for="search"></label> -->
-            <input v-model="filterBy.title" type="text" name="search" placeholder="Search mail"/>
+            <div class="search-div">
+              
+              <input v-model="filterBy.title" type="text" name="search" placeholder="Search mail"/>
+            </div>
             `,
   data() {
     return {
       filterBy: { title: "" },
     }
   },
+  methods: {
+    filter(){
+        this.$emit('filter', this.filterBy)
+    }
+}
 }
