@@ -1,7 +1,8 @@
 import NoteTodos from './NoteTodos.js'
 import NoteImg from './NoteImg.js'
 import NoteTxt from './NoteTxt.js'
-
+import NoteVideo from './NoteVideo.js'
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
 import { noteService } from '../service/note.service.js'
 export default {
   props: ['notes'],
@@ -29,6 +30,7 @@ export default {
       noteService.remove(noteId).then(() => {
         const idx = this.notes.findIndex((note) => note.id === noteId)
         this.notes.splice(idx, 1)
+        showSuccessMsg('Note Deleted')
       })
     },
   },
@@ -37,5 +39,6 @@ export default {
     NoteTodos,
     NoteImg,
     NoteTxt,
+    NoteVideo,
   },
 }

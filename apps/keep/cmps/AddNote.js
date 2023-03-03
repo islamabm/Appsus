@@ -31,11 +31,6 @@ export default {
     `,
   data() {
     return {
-      // txt: '',
-      // url: '',
-      // todosStr: '',
-      // todos: [],
-      // vUrl: '',
       selectedNote: 'NoteTxt',
       note: {
         type: 'NoteTxt',
@@ -43,38 +38,18 @@ export default {
         info: {},
         createdAt: {},
       },
-      // this.selectedNote === 'NoteTxtAdd'
-      //   ? noteService.getEmptyTxtNote()
-      // : noteService.getEmptyTodosNote(),
     }
   },
   methods: {
     save() {
       console.log(this.note)
       this.$emit('saveNote', this.note)
-      // this.todos.push(...this.todosStr.split(','))
-      // this.$emit('note-img-saved', this.url)
-      // this.$emit('note-saved', this.txt)
-      // this.$emit('note-todos-saved', this.todos)
-      // this.$emit('note-video-saved', this.vUrl)
     },
     updateInfo(info) {
       this.note.type = this.selectedNote
       console.log(this.note.type)
       this.note.info = info
     },
-    // onAddTxt(txt) {
-    //   this.txt = txt
-    // },
-    // onAddUrl(url) {
-    //   this.url = url
-    // },
-    // onAddTodos(todosStr) {
-    //   this.todosStr = todosStr
-    // },
-    // onAddVideoUrl(vUrl) {
-    //   this.vUrl = vUrl
-    // },
   },
   components: {
     NoteImgAdd,

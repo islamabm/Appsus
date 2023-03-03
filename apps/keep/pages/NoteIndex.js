@@ -3,6 +3,7 @@ import { noteService } from '../service/note.service.js'
 import NoteList from '../cmps/NoteList.js'
 import NoteHeader from '../cmps/NoteHeader.js'
 import AddNote from '../cmps/AddNote.js'
+import { showSuccessMsg } from '../../../services/event-bus.service.js'
 // import NoteNav from '../cmps/NoteNav.js'
 export default {
   template: `
@@ -37,6 +38,8 @@ export default {
     addNote(note) {
       noteService.save(note).then((addedNote) => {
         this.notes.push(addedNote)
+        console.log(note.type)
+        showSuccessMsg(`${note.type} Addded`)
       })
     },
     // onSaveNote(txt) {

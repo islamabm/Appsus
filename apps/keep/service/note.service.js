@@ -143,6 +143,7 @@ function _createNotes() {
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createImgNotes())
+    notes.push(_createVideoNote())
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
@@ -201,6 +202,22 @@ function _createTxtNote() {
     },
     info: {
       txt: 'Fullstack Me Baby!',
+    },
+  }
+}
+
+function _createVideoNote() {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteVideo',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00d',
+    },
+    info: {
+      url: 'https://www.google.com/search?q=video+url&sxsrf=AJOqlzVUy_6QWyr4Il6irPLaB_R15h2R-A%3A1677840423825&source=hp&ei=J9ABZPG8MIubgQacr7ToAg&iflsig=AK50M_UAAAAAZAHeN-9NHzjNdqmNHgsy--UiBh0tZtep&ved=0ahUKEwix7MzTyr_9AhWLTcAKHZwXDS0Q4dUDCAg&uact=5&oq=video+url&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgcIIxDqAhAnOgQIIxAnOggILhCABBCxAzoOCC4QgAQQsQMQxwEQ0QM6EQguEIAEELEDEIMBEMcBENEDOggIABCABBCxAzoLCAAQgAQQsQMQgwE6CwguEIAEEMcBENEDOgQIABADOgcIABCABBAKOgoIABCABBCxAxAKOg0IABCABBCxAxCDARAKULASWIAmYOLCAWgBcAB4AIABkwGIAckJkgEDMC45mAEAoAEBsAEK&sclient=gws-wiz#fpstate=ive&vld=cid:1af8599b,vid:zWh3CShX_do',
+      title: 'loli and me',
     },
   }
 }
