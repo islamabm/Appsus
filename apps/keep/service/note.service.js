@@ -59,6 +59,7 @@ function save(note) {
 // },
 function getEmptyTxtNote(txt = '') {
   return {
+    id: utilService.makeId(),
     createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
@@ -92,7 +93,7 @@ function getEmptyTodosNote(todos = []) {
     type: 'NoteTodos',
     isPinned: true,
     info: {
-      title: 'Get my stuff together',
+      // title: 'Get my stuff together',
       todos: todos,
     },
   }

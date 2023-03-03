@@ -9,10 +9,11 @@ export default {
         <NoteHeader></NoteHeader>
         <!-- <NoteNav></NoteNav> -->
         <AddNote 
-        @note-saved="onSaveNote"
-        @note-img-saved="onSaveImgNote"
-        @note-todos-saved="onSaveTodosNote"
-
+        @saveNote="addNote"
+         @note-saved="onSaveNote"
+         @note-img-saved="onSaveImgNote"
+         @note-todos-saved="onSaveTodosNote"
+       
         />
         
         <!-- <section class="note-index"> -->
@@ -33,26 +34,30 @@ export default {
     }
   },
   methods: {
-    onSaveNote(txt) {
-      const note = noteService.getEmptyTxtNote(txt)
-      noteService.save(note).then((savedNote) => {
-        this.notes.unshift(savedNote)
+    addNote(note) {
+      noteService.save(note).then((addedNote) => {
+        this.notes.push(addedNote)
       })
     },
-    onSaveImgNote(url) {
-      const note = noteService.getEmptyImgNote(url)
-      noteService.save(note).then((savedNote) => {
-        this.notes.unshift(savedNote)
-      })
-    },
-    onSaveTodosNote(todos) {
-      const note = noteService.getEmptyTodosNote(todos)
-      noteService.save(note).then((savedNote) => {
-        this.notes.unshift(savedNote)
-      })
-    },
+    // onSaveNote(txt) {
+    //   const note = noteService.getEmptyTxtNote(txt)
+    //   noteService.save(note).then((savedNote) => {
+    //     this.notes.unshift(savedNote)
+    //   })
+    // },
+    // onSaveImgNote(url) {
+    //   const note = noteService.getEmptyImgNote(url)
+    //   noteService.save(note).then((savedNote) => {
+    //     this.notes.unshift(savedNote)
+    //   })
+    // },
+    // onSaveTodosNote(todos) {
+    //   const note = noteService.getEmptyTodosNote(todos)
+    //   noteService.save(note).then((savedNote) => {
+    //     this.notes.unshift(savedNote)
+    //   })
+    // },
   },
-
   created() {
     noteService.query().then((notes) => (this.notes = notes))
   },
@@ -64,3 +69,6 @@ export default {
     // NoteNav,
   },
 }
+// @note-saved="onSaveNote"
+// @note-img-saved="onSaveImgNote"
+// @note-todos-saved="onSaveTodosNote"

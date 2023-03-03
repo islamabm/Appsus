@@ -11,13 +11,15 @@ export default {
             <li class="note-container" v-for="note in notes">
             <button class="remove-todo-btn" @click="remove(note.id)">
               <img class="trash-icon" src="icons/trash.png" /></button>
+          <!-- <article :style="note.style"> -->
           <Component
           class="note"
 					:is="note.type"
           :info="note.info"
 					></Component>
-          </li>
-          </ul>
+        </li>
+      <!-- </article> -->
+      </ul>
 
          </section>
     `,
