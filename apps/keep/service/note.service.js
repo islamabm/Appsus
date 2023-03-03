@@ -71,6 +71,7 @@ function getEmptyTxtNote(txt = '') {
     },
   }
 }
+
 function getEmptyImgNote(url = '') {
   return {
     id: utilService.makeId(),
@@ -78,7 +79,7 @@ function getEmptyImgNote(url = '') {
     type: 'NoteImg',
     isPinned: true,
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: '#FF6F61',
     },
     info: {
       url: url,
@@ -86,6 +87,7 @@ function getEmptyImgNote(url = '') {
     },
   }
 }
+
 function getEmptyTodosNote(todos = []) {
   return {
     id: utilService.makeId(),
@@ -98,6 +100,7 @@ function getEmptyTodosNote(todos = []) {
     },
   }
 }
+
 // function getEmptyTodosNote(todos = '') {
 //   return {
 //     id: utilService.makeId(),
@@ -130,12 +133,6 @@ function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
   if (!notes || !notes.length) {
     notes = []
-    // notes.push(_createTxtNote())
-    // notes.push(_createTxtNote())
-    // notes.push(_createTxtNote())
-    // notes.push(_createTxtNote())
-    // notes.push(_createTxtNote())
-    // notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createTxtNote())
     notes.push(_createTodosNote())
@@ -147,12 +144,6 @@ function _createNotes() {
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
-
-// function _createNote(title, importance = 250) {
-//   const note = getEmptyNote(title, importance)
-//   note.id = utilService.makeId()
-//   return note
-// }
 
 function _createImgNotes() {
   return {
@@ -216,7 +207,7 @@ function _createVideoNote() {
       backgroundColor: '#00d',
     },
     info: {
-      url: 'https://www.google.com/search?q=video+url&sxsrf=AJOqlzVUy_6QWyr4Il6irPLaB_R15h2R-A%3A1677840423825&source=hp&ei=J9ABZPG8MIubgQacr7ToAg&iflsig=AK50M_UAAAAAZAHeN-9NHzjNdqmNHgsy--UiBh0tZtep&ved=0ahUKEwix7MzTyr_9AhWLTcAKHZwXDS0Q4dUDCAg&uact=5&oq=video+url&gs_lcp=Cgdnd3Mtd2l6EAMyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEOgcIIxDqAhAnOgQIIxAnOggILhCABBCxAzoOCC4QgAQQsQMQxwEQ0QM6EQguEIAEELEDEIMBEMcBENEDOggIABCABBCxAzoLCAAQgAQQsQMQgwE6CwguEIAEEMcBENEDOgQIABADOgcIABCABBAKOgoIABCABBCxAxAKOg0IABCABBCxAxCDARAKULASWIAmYOLCAWgBcAB4AIABkwGIAckJkgEDMC45mAEAoAEBsAEK&sclient=gws-wiz#fpstate=ive&vld=cid:1af8599b,vid:zWh3CShX_do',
+      url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
       title: 'loli and me',
     },
   }

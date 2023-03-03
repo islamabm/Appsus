@@ -6,11 +6,6 @@
   height: 1.5em;
 }
 
-/* @media (max-width: 700px) {
-  .add-note-component {
-    margin-left: 0;
-  }
-} */
 .note-header input {
   height: 2.875em;
   padding: 0;
@@ -18,6 +13,7 @@
   border: 1px solid transparent;
 }
 .add-note-component {
+  margin-block-start: 0.3em;
   margin-bottom: 1em;
   margin-left: 20em;
 }

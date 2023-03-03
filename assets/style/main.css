@@ -27,3 +27,5 @@
 @import 'apps/note/NoteHeader.css';
 @import 'apps/note/NoteEdit.css';
 @import 'apps/note/AddNote.css';
+@import 'apps/note/NoteTxt.css';
+@import 'apps/note/ColorPicker.css';

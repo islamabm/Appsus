@@ -1,4 +1,4 @@
-// import { svgService } from '../../../services/SVG.service.js'
+import { svgService } from '../../../services/SVG.service.js'
 
 export default {
   template: `
@@ -15,15 +15,28 @@ export default {
             <span class="yellow">t</span>
             <span class="green">e</span>
             </h1>
-            <!-- <div className="img" 
-                v-html="getSvg('img')">
+            <div><input class="serch-input" type="text" placeholder="serch">
+            <span className="search" 
+                v-html="getSvg('search')">
+                </span></div>
+               
+             <div>
+             <span class="settings-icon" className="settings" 
+                v-html="getSvg('settings')"></span>
+              </div>
+<!-- lightBolbmore
+                <div className="trash" 
+                v-html="getSvg('trash')">
                 </div> -->
+                
+                <!-- :style="{ fontSize: size + 'px' }"      -->
+                
 </header>
     `,
 
-  //   methods: {
-  //     getSvg(iconName) {
-  //       return svgService.getSvg(iconName)
-  //     },
-  //   },
+  methods: {
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    },
+  },
 }
