@@ -9,19 +9,19 @@ export default {
                 </span>
               <span class="mail-nav-text">Compose</span>
             </li>
-            <RouterLink to="/sent"><li>
+            <li @click="filter('inbox')">
             <span className="inbox" 
                 v-html="getSvg('inbox')">
                 </span>
                 <span class="mail-nav-text">Inbox</span>
-            </li></RouterLink>
-		    <li>
+            </li>
+		    <li @click="filter('stars')">
             <span className="starFill" 
                 v-html="getSvg('starFill')">
                 </span>
                 <span class="mail-nav-text">Starred</span>
             </li>
-		    <li>
+		    <li @click="filter('sent')">
             <span className="sent" 
                 v-html="getSvg('sent')">
                 </span>
@@ -33,7 +33,7 @@ export default {
                 </span>
                 <span class="mail-nav-text">Drafts</span>
             </li>
-		    <li @click="filterByTrash">
+		    <li @click="filter('trash')">
             <span className="trash" 
                 v-html="getSvg('trash')">
                 </span>
@@ -41,6 +41,17 @@ export default {
             </li>
         </nav>
     `,
+    data() {
+      return {
+        filterBy :{
+          status: 'sent',
+          txt: 'puki', // no need to support complex text search
+          isRead: true, // (optional property, if missing: show all)
+          isStared: true, // (optional property, if missing: show all)
+          lables: ['important', 'romantic'] // has any of the labels
+         },
+      }
+    },
   methods: {
     openCreateModal() {
       this.$emit("openCreateModal")
@@ -48,8 +59,10 @@ export default {
     getSvg(iconName) {
         return svgService.getMailSvg(iconName)
     },
-    filterByTrash(){
-      this.$emit('filterByTrash')
+    filter(status){
+      this.filterBy.status = status
+      console.log('clicked');
+      this.$emit('filter',this.filterBy.status)
     }  
   },
   components: {

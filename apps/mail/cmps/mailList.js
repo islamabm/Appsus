@@ -10,7 +10,7 @@ export default {
                     <MailPreview :email="email"/>
                 <div class="email-preview-buttons">
                 <button>📩</button>
-                <button @click="deleteEmail(email.id)">
+                <button @click.stop="deleteEmail(email.id)">
                   <div className="trash" 
                   v-html="getSvg('trash')">
                   </div>
@@ -25,7 +25,6 @@ export default {
 
   methods: {
     deleteEmail(emailId) {
-      console.log(emailId)
       this.$emit("deleteEmail", emailId)
     },
     mark(emailId) {

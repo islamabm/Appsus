@@ -5,13 +5,15 @@ import { router } from './routes.js'
 import AppHeader from './cmps/AppHeader.js'
 import AppFooter from './cmps/AppFooter.js'
 import UserMsg from './cmps/UserMsg.js'
+import AppBody from './cmps/AppBody.js'
 
 const options = {
   template: `
         <!-- <section> -->
-            <AppHeader />
+            <!-- <AppHeader /> -->
+            <AppBody/>
             <RouterView />
-            <AppFooter />
+            <!-- <AppFooter /> -->
             <UserMsg />
         <!-- </section> -->
     `,
@@ -19,6 +21,7 @@ const options = {
     AppHeader,
     AppFooter,
     UserMsg,
+    AppBody,
   },
 }
 

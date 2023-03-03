@@ -14,12 +14,12 @@ export default {
 
             <h1>MisterEmail</h1>
 
-            <MailFilter @filter="setFilterBy"/>
+            <MailFilter/>
         </header>
         <main class="mail-main-content">
           <MailNav @openCreateModal="openCreateModal"
+          @filter = "setFilterBy"
           />
-                    <!-- @filterByTrash = "filterByTrash" -->
 
           <MailCreate @addNewEmail="addNewEmail" @closeModal="closeModal" v-if="isModalOpen"/>
 
@@ -41,18 +41,24 @@ export default {
       selectedEmail: null,
       isModalOpen: false,
       emails: [],
-      trash: [],
-      filterBy: { title: "" , trash: this.trash },
+      filterBy :{
+        status: 'inbox',
+        txt: 'puki', // no need to support complex text search
+        isRead: true, // (optional property, if missing: show all)
+        isStared: true, // (optional property, if missing: show all)
+        lables: ['important', 'romantic'] // has any of the labels
+       },
     }
   },
   methods: {
+    // setFilterBy(filterBy) {
+    //   this.filterBy = filterBy
+    // },
     setFilterBy(filterBy) {
-      this.filterBy = filterBy
+      this.filterBy.status = filterBy
     },
     showEmailDetails(emailId) {
-      console.log(emailId)
       this.selectedEmail = this.emails.find((email) => email.id === emailId)
-      console.log(this.selectedEmail)
     },
     toggelMarked(emailId) {
       this.email = this.emails.find(email => email.id === emailId)
@@ -81,6 +87,7 @@ export default {
         removedAt: null,
         from: "momo@momo.com",
         to: to,
+        status: 'sent',
       }
       this.emails.unshift(newEmail)
       mailService.save(newEmail)
@@ -89,10 +96,6 @@ export default {
       })
     },
     deleteEmail(emailId) {
-      const emailDeleted = this.emails.find((email) => email.id === emailId)
-      this.trash.push(emailDeleted)
-      mailService.saveTrash(this.trash)
-
       mailService.remove(emailId).then(() => {
         const idx = this.emails.findIndex((email) => email.id === emailId)
         this.emails.splice(idx, 1)
@@ -102,8 +105,8 @@ export default {
   },
   computed: {
     filteredEmails() {
-      const regex = new RegExp(this.filterBy.body, 'i')
-      return this.emails.filter((email) => regex.test(email.body))
+      const regex = new RegExp(this.filterBy.status, 'i')
+      return this.emails.filter((email) => regex.test(email.status))
     },
   },
   created() {

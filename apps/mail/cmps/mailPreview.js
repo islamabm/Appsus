@@ -11,7 +11,7 @@ export default {
                 v-html="getSvg('inbox')">
                 </span>
              -->
-            <p class="email-subject">{{ email.from }}</p>
+            <p class="email-subject">{{ email.subject }}</p>
             <p class="email-content">
             <LongTxt :txt="email.body"/>
             </p> 
