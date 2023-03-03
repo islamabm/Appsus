@@ -7,6 +7,7 @@
     top: 250px;
     grid-column: 3;
     border: 2px solid black;
+    z-index: 1;
 }
 
 .create-mail-modal input {

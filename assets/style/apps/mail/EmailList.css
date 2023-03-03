@@ -8,11 +8,13 @@
 .mail-list li {
     /* border: .5px solid black; */
     box-shadow: inset 0 -1px 0 0 rgb(100 121 143 / 12%);
-    padding: 6px 0 ;
+    padding: 11px 0 ;
     display: flex;
+    justify-content: space-between;
     overflow: hidden;
     position: relative;
     margin-top: 3px;
+    align-items: baseline
 }
 
 .mail-list li:hover {
@@ -20,6 +22,11 @@
    box-shadow: inset 1px 0 0 #dadce0, inset -1px 0 0 #dadce0, 0 1px 2px 0 rgb(60 64 67 / 30%), 0 1px 3px 1px rgb(60 64 67 / 15%);
    z-index: 2;
 }
+
+.mail-list li:hover .email-preview-buttons {
+
+    opacity: 1;
+} 
 
 .read {
     background-color: #c2DBff;
@@ -36,8 +43,4 @@
 
 .email-preview-buttons {
     opacity: 0;
-}
-
-.email-preview-buttons:hover {
-    opacity: 1;
 }

@@ -1,5 +1,3 @@
-
-
 export default {
     props: ['email'],
     template: `
@@ -9,6 +7,5 @@ export default {
 
         </section>
     `,
-    methods: {
-    }
+
 }

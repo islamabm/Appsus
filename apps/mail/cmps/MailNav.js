@@ -4,29 +4,40 @@ export default {
   template: `
         <nav class="mail-nav">
             <li @click="openCreateModal">
-                <div className="compose" 
+                <span className="compose" 
                 v-html="getSvg('compose')">
-                </div>
+                </span>
+              <span class="mail-nav-text">Compose</span>
             </li>
             <RouterLink to="/sent"><li>
-            <div className="inbox" 
+            <span className="inbox" 
                 v-html="getSvg('inbox')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Inbox</span>
             </li></RouterLink>
 		    <li>
-            <div className="starFill" 
+            <span className="starFill" 
                 v-html="getSvg('starFill')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Starred</span>
             </li>
 		    <li>
-            <div className="sent" 
+            <span className="sent" 
                 v-html="getSvg('sent')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Sent</span>
             </li>
 		    <li>
-            <div className="draftsFill" 
+            <span className="draftsFill" 
                 v-html="getSvg('draftsFill')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Drafts</span>
+            </li>
+		    <li @click="filterByTrash">
+            <span className="trash" 
+                v-html="getSvg('trash')">
+                </span>
+                <span class="mail-nav-text">Trash</span>
             </li>
         </nav>
     `,
@@ -36,13 +47,12 @@ export default {
     },
     getSvg(iconName) {
         return svgService.getMailSvg(iconName)
-    },  
+    },
+    filterByTrash(){
+      this.$emit('filterByTrash')
+    }  
   },
   components: {
     svgService,
   },
 }
-/* <div className="compose" 
-    v-html="getSvg('compose')">
-    </div>
-    <span>Compose</span> */

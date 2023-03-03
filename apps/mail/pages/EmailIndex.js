@@ -4,28 +4,28 @@ import MailNav from "../cmps/MailNav.js"
 import MailDetails from "./MailDetails.js"
 import MailCreate from "../cmps/MailCreate.js"
 
-import {svgService} from "../../../services/SVG.service.js"
 import { mailService } from '../service/mail.service.js'
-import {showSuccessMsg} from '../../../services/event-bus.service.js'
+import {showSuccessMsg,showErrorMsg} from '../../../services/event-bus.service.js'
 import { utilService } from "../../../services/util.service.js"
 
 export default {
   template: `
         <header class="mail-header">
-            <!-- <div className="location" 
-                v-html="getSvg('location')">
-                </div> -->
+
             <h1>MisterEmail</h1>
 
             <MailFilter @filter="setFilterBy"/>
         </header>
         <main class="mail-main-content">
-          <MailNav @openCreateModal="openCreateModal"/>  
+          <MailNav @openCreateModal="openCreateModal"
+          />
+                    <!-- @filterByTrash = "filterByTrash" -->
+
           <MailCreate @addNewEmail="addNewEmail" @closeModal="closeModal" v-if="isModalOpen"/>
 
           <MailList
+          @mark="toggelMarked"
           @deleteEmail="deleteEmail"
-          @mark="markAsUnRead"
           :emails="filteredEmails"/>
           
         </main> 
@@ -41,13 +41,11 @@ export default {
       selectedEmail: null,
       isModalOpen: false,
       emails: [],
-      filterBy: { title: "" },
+      trash: [],
+      filterBy: { title: "" , trash: this.trash },
     }
   },
   methods: {
-    getSvg(iconName) {
-      return svgService.getSvg(iconName)
-    },  
     setFilterBy(filterBy) {
       this.filterBy = filterBy
     },
@@ -56,11 +54,10 @@ export default {
       this.selectedEmail = this.emails.find((email) => email.id === emailId)
       console.log(this.selectedEmail)
     },
-    markAsUnRead(emailId) {
-      console.log(emailId);
+    toggelMarked(emailId) {
       this.email = this.emails.find(email => email.id === emailId)
-      console.log(this.email);
-      this.email.isRead = true
+      this.email.isRead = !this.email.isRead
+      mailService.save(this.email)
     },
     openCreateModal() {
       this.isModalOpen = true
@@ -69,30 +66,39 @@ export default {
       this.isModalOpen = false
     },
     addNewEmail(to,title,body) {
+      if(!title || !body) return showErrorMsg('Error: Need to fill the lines')
+      let date = new Date
+      const month = 'Mar'
+      const day = date.getDay()
+    
       const newEmail = {
         id: utilService.makeId(),
         subject: title,
         body:  body,
         isRead: false,
         isStar: false,
-        sentAt: Date.now(),
+        sentAt: month + ' ' + day,
         removedAt: null,
         from: "momo@momo.com",
         to: to,
       }
-      this.emails.push(newEmail)
+      this.emails.unshift(newEmail)
       mailService.save(newEmail)
       .then(() => {
         showSuccessMsg('Email Added')
-    })
+      })
     },
     deleteEmail(emailId) {
+      const emailDeleted = this.emails.find((email) => email.id === emailId)
+      this.trash.push(emailDeleted)
+      mailService.saveTrash(this.trash)
+
       mailService.remove(emailId).then(() => {
         const idx = this.emails.findIndex((email) => email.id === emailId)
         this.emails.splice(idx, 1)
        showSuccessMsg('Email Deleted')
-    })
-  },
+      })
+    },
   },
   computed: {
     filteredEmails() {
@@ -104,13 +110,11 @@ export default {
     mailService.query().then((emails) => (this.emails = emails))
   },
 
-
   components: {
     MailList,
     MailFilter,
     MailNav,
     MailDetails,
     MailCreate,
-    svgService,
   },
 }
