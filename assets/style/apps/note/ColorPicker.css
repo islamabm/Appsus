@@ -1,0 +1,34 @@
+/* .color-picker-btn {
+}
+.color-picker {
+  display: none;
+} */
+.color-picker {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-picker div {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.color-picker div:hover {
+  transform: scale(1.1);
+}
+
+.color-picker div:last-child {
+  margin-right: 0;
+}
+
+.color-picker div.selected {
+  border: 2px solid #fff;
+}
+.paint-icon {
+  background-color: transparent;
+  border: none;
+}

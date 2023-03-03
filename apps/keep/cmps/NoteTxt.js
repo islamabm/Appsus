@@ -1,14 +1,16 @@
 export default {
   props: ['info'],
   template: `
-                 <section  :class="editClass" class="edit-modal">
-                 <!-- <button @click="editTxt">edit</button> -->
-                  <input class="edit-modal" type="text" v-if="isEdit" v-model="txt" placeholder="change the text..">
+  
 
+                  <section @click="noteClicked" class="note-txt note">
+                 <p @click="editTxt">{{(isEdit)? txt: info.txt}}</p>
+                 <!-- <button @click="editTxt">edit</button>  -->
                  </section>
-                 <section class="note-txt note">
-                 <p>{{info.txt}}</p>
-                 </section>
+                 <section v-if="isEdit" :class="editClass" class="edit-modal"> 
+                 <input class="edit-modal" type="text"  v-model="txt" placeholder="change the text..">
+                 </section> 
+
  `,
 
   data() {
@@ -20,7 +22,9 @@ export default {
   methods: {
     editTxt() {
       this.isEdit = true
-      console.log(info.style.backgroundColor)
+    },
+    noteClicked() {
+      console.log('hi')
     },
   },
   computed: {
