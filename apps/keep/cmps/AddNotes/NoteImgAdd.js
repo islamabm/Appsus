@@ -1,16 +1,24 @@
 export default {
   template: `
-         <input type="url" v-model="url" @input="AddUrl" placeholder="Enter Image Url..." autofocus />
+         <input  
+         class="input-user-note-type"  
+         type="url" 
+         v-model="info.url" 
+         @input="AddUrl" 
+         placeholder="Enter Image Url..." 
+         autofocus />
       `,
   data() {
     return {
-      url: '',
+      info: {
+        title: '',
+        url: '',
+      },
     }
   },
   methods: {
     AddUrl() {
-      this.$emit('AddUrl', this.url)
-      this.url = ''
+      this.$emit('updateInfo', this.info)
     },
   },
 }

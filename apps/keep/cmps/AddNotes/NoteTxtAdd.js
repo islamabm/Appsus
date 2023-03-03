@@ -1,15 +1,23 @@
 export default {
   template: `
-       <input type="text" v-model="txt" @input="AddTxt" placeholder="Enter a text..." autofocus />
+       <input  
+       class="input-user-note-type"  
+       type="text" 
+       v-model="info.txt" 
+       @input="AddTxt" 
+       placeholder="Enter a text..." 
+       autofocus />
     `,
   data() {
     return {
-      txt: '',
+      info: {
+        txt: '',
+      },
     }
   },
   methods: {
     AddTxt() {
-      this.$emit('AddTxt', this.txt)
+      this.$emit('updateInfo', this.info)
     },
   },
 }

@@ -1,19 +1,7 @@
 .clean-list {
   list-style-type: none;
 }
-/* .todo-container {
-  background-color: pink;
-  border: 1px solid black;
-}
-.notes-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 200px));
-  gap: 10px;
-}
 
-.back-ground-color {
-  background-color: #00d;
-} */
 .note-container {
   border: 1px solid gray;
   border-radius: 10px;
@@ -21,20 +9,3 @@
 .note-txt p {
   color: black;
 }
-/* .note-list:nth-child(2n) {
-  background-color: #5596ce;
-} */
-/* Selects the second element of div siblings */
-/* li:nth-child(2n) {
-  background-color: #5596ce;
-} */
-
-/* Selects the second li element in a list */
-/* li:nth-child(2) {
-  background: lightgreen;
-} */
-
-/* Selects every third element among any group of siblings */
-/* :nth-child(3) {
-  background: yellow;
-} */

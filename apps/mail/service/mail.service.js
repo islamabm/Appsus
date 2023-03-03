@@ -1,5 +1,5 @@
-import { utilService } from "../../../services/util.service.js"
-import { storageService } from "../../../services/async-storage.service.js"
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/async-storage.service.js'
 
 const EMAIL_KEY = "mailDB"
 const TRASH_KEY = "trashDB"
@@ -56,13 +56,13 @@ function _createEmail() {
     isStar: false,
     sentAt: month + " " + day,
     removedAt: null,
-    from: "momo@momo.com",
-    to: "user@appsus.com",
+    from: 'momo@momo.com',
+    to: 'user@appsus.com',
   }
 }
 
-function getMail(title = "", content = "") {
-  return { id: "", title, content }
+function getMail(title = '', content = '') {
+  return { id: '', title, content }
 }
 
 function save(email) {

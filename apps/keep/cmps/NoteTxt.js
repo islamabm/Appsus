@@ -2,12 +2,12 @@ export default {
   props: ['info'],
   template: `
                  <section  :class="editClass" class="edit-modal">
-                 <button @click="editTxt">edit</button>
+                 <!-- <button @click="editTxt">edit</button> -->
                   <input class="edit-modal" type="text" v-if="isEdit" v-model="txt" placeholder="change the text..">
 
                  </section>
                  <section class="note-txt note">
-                 <p>{{(isEdit)? txt:info.txt}}</p>
+                 <p>{{info.txt}}</p>
                  </section>
  `,
 

@@ -1,6 +1,6 @@
 .notes-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 200px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
   gap: 10px;
 }
 .edit-modal {
@@ -9,26 +9,12 @@
 .note-txt {
   color: white;
 }
-/* .todos-articale {
-  background-color: pink;
-} */
+
 .note-img {
   border: 0.5px solid green;
   background-color: white;
-  /* background-color: rgb(250, 169, 93);
-  background-color: rgb(31, 18, 18); */
 }
-/* .black {
-  color: rgb(31, 18, 18);
-  font-size: 1.5em;
-}
-.yellow {
-  color: rgb(250, 169, 93);
-  font-size: 1.5em;
-} */
-/* .user-input-container {
-  border: 1px solid black;
-} */
+
 .user-input-container button {
   height: 0.5em;
   border: 0;
@@ -36,24 +22,15 @@
 }
 
 .user-input-container {
-  /* margin-left: .5em; */
   display: flex;
 }
 .user-btn:hover {
   border-top: 1px solid gray;
-  /* border-radius: 50%; */
 }
 .notes-list li {
   background-color: #5596ce;
 }
-/* .remove-todo-btn {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-.note-container {
-  position: relative;
-} */
+
 .txt-done {
   text-decoration: line-through;
 }
