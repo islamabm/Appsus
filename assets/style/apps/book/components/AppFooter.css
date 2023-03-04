@@ -1,0 +1,21 @@
+.app-footer {
+  color: var(--clr2);
+  background-color: var(--clr3);
+  text-align: center;
+  height: 15vh;
+
+  line-height: 80px;
+}
+
+.githip-icon,
+.facebook-icon,
+.linkedin-icon {
+  width: 30px;
+  margin-right: 0.5em;
+  cursor: pointer;
+}
+.icons {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+}

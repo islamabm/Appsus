@@ -1,0 +1,10 @@
+.add-btn {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+}
+.add-book-form {
+  display: grid;
+  gap: 15px;
+  width: 40vh;
+}

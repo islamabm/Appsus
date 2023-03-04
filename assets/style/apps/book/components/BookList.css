@@ -1,0 +1,38 @@
+.book-list ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+
+  padding: 10px;
+  background-color: var(--clr7);
+  list-style-type: none;
+}
+.book-list ul li {
+  color: var(--clr9);
+  padding: 10px;
+  background-color: var(--clr8);
+}
+.remove-book-btn {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.details-btn {
+  margin-inline-end: 0.2em;
+}
+.book-display {
+  position: relative;
+}
+.edit-book-btn {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+.delete-book-icon {
+  width: 20px;
+}
+.add-book-icon {
+  width: 10px;
+  margin-inline-start: 0.3em;
+}

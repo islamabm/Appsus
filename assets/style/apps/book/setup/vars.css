@@ -1,0 +1,20 @@
+:root {
+  --clr1: rgb(72, 224, 52);
+  --clr2: whitesmoke;
+  --clr3: rgb(53, 48, 48);
+  --clr4: rgb(87, 81, 81);
+  --clr5: white;
+  --clr6: black;
+  --clr7: lightblue;
+  --clr8: rgb(48, 51, 48);
+  --clr9: aliceblue;
+  --clr10: #fff;
+  --clr11: #111;
+  --clr12: lightgray;
+  --clr13: lightgreen;
+  --clr14: lightcoral;
+  --clr15: red;
+  --clr16: green;
+  --clr17: blue;
+  --clr18: pink;
+}

@@ -1,0 +1,12 @@
+.add-review {
+  width: 200px;
+}
+.form-review {
+  display: grid;
+  gap: 15px;
+  background-color: rgb(53, 51, 40);
+  margin-top: 1em;
+}
+.add-review-header {
+  background-color: white;
+}

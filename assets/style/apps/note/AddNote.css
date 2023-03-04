@@ -10,3 +10,6 @@
   border-left-style: hidden;
   border-bottom-style: groove; */
 }
+.input-user-note-type:focus {
+  outline: none;
+}
