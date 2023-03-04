@@ -5,7 +5,7 @@ export default {
   template: `
 
       <section @click="noteClicked" class="note-txt note">
-          <p  @click="editTxt" @click="editTxt">{{(isEdit)? txt: info.txt}}</p>
+          <p  @click="editTxt">{{(isEdit)? txt: info.txt}}</p>
             <!-- <button @click="editTxt">edit</button> -->
       </section>
       <div class="back-drop"  v-show="isEdit">
@@ -34,9 +34,6 @@ export default {
       this.isEdit = false
       this.info.txt = this.txt // update the info.txt property of this.info directly
       noteService.save(this.info) // save the updated note
-    },
-    noteClicked() {
-      console.log('hi')
     },
   },
   computed: {

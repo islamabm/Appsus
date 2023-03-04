@@ -16,8 +16,8 @@ export default {
             <li :style="note.style" class="note-container" v-for="note in notes" :key="note.id">
             <button class="remove-todo-btn" @click="remove(note.id)">
           <img class="trash-icon" src="icons/trash.png" /></button>
-          <!-- <button class="duplicate-todo-btn" @click="duplicate(note.id)">
-          <span class="settings-icon" className="bars"  v-html="getSvg('bars')"></span></button> -->
+          <button class="duplicate-todo-btn" @click="duplicate(note.id)">
+          <span class="duplicate-icon" className="bars"  v-html="getSvg('bars')"></span></button>
           <!-- <button class="pin-todo-btn" @click="pin(note.id)">
           <span class="settings-icon" className="pin"  v-html="getSvg('pin')"></span></button> -->
                
@@ -25,15 +25,9 @@ export default {
           class="note"
 					:is="note.type"
           :info="note.info"
-   
-
           @noteUpdated="updateNote($event, note.id)" 
-
 					></Component>
 
-          <!-- <button class="paint-icon" title="Change color">
-          <i v-html="getSvg('paint')"></i>
-          </button> -->
           <ColorPicker 
           @selected="changeColor($event, note.id)"
          >
@@ -57,9 +51,20 @@ export default {
     getSvg(iconName) {
       return svgService.getSvg(iconName)
     },
-    // duplicate(noteId) {
-    //   const note = this.notes.find((note) => note.id === noteId)
-    //   this.notes.push(note)
+    duplicate(noteId) {
+      const note = this.notes.find((note) => note.id === noteId)
+      noteService.save(note).then((duplicated) => {
+        this.notes.push(duplicated)
+        showSuccessMsg(`${note.type} Dublicated`)
+      })
+      // this.notes.push(note)
+    },
+    // addNote(note) {
+    //   noteService.save(note).then((addedNote) => {
+    //     this.notes.push(addedNote)
+    //     console.log(note.type)
+    //     showSuccessMsg(`${note.type} Addded`)
+    //   })
     // },
     // pin(noteId){
     //   const note = this.notes.find((note) => note.id === noteId)
@@ -67,12 +72,7 @@ export default {
     // },
 
     changeColor(newColor, noteId) {
-      console.log(newColor)
-      console.log(noteId)
-      // const note = this.notes.find((note) => note.id === noteId)
-      console.log(this.notes)
       const note = this.notes.find((note) => note.id === noteId)
-      console.log(note)
       note.style.backgroundColor = newColor
     },
   },

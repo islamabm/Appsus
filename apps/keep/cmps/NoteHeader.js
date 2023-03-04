@@ -25,14 +25,8 @@ export default {
                 v-html="getSvg('settings')"></span>
               </div>
               
-            <router-link to="/" class="back-home-button">Home</router-link>
-<!-- lightBolbmore
-                <div className="trash" 
-                v-html="getSvg('trash')">
-                </div> -->
-                
-                <!-- :style="{ fontSize: size + 'px' }"      -->
-                
+            <router-link to="/body" class="back-home-button">Home</router-link>
+            
 </header>
     `,
 

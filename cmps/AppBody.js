@@ -1,15 +1,21 @@
-import {utilService} from '../services/util.service.js'
+import { utilService } from '../services/util.service.js'
 
 export default {
-    template: `
+  template: `
         <div v-if="isShown">
         <header class="body-header">
-        <h1>Welcome to Appsus</h1>
+        <h1>Welcome To AppSus</h1>
         </header>
 
         <div class="app-body-layout"> 
             <div @click="hideMainScreen" ref="gmail" class="img-container">
-            <router-link to="/gmail"><a @click="animateGmail"><img class="body-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kYDByc1TdFsObi9J1qDTo6_WzPEF62sB7cOgopwPpw&s"></a></router-link>
+            <router-link to="/gmail">
+                <a @click="animateGmail">
+                   
+        <img class="body-img" 
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-kYDByc1TdFsObi9J1qDTo6_WzPEF62sB7cOgopwPpw&s">
+                </a>
+            </router-link>
             </div>
         
             <div @click="hideMainScreen" ref="keep" class="img-container">
@@ -26,24 +32,23 @@ export default {
         </footer>
         </div>
     `,
-    data() {
-        return {
-            isShown: true
-        }
-    },
-    methods: {
-        animateGmail() {
-            utilService.animateCSS(this.$refs.gmail,'bounceIn')
-        },
-        animateKeep() {
-            utilService.animateCSS(this.$refs.keep,'bounceIn')
-        },
-        animateBooks() {
-            utilService.animateCSS(this.$refs.books,'bounceIn')
-        },
-        hideMainScreen() {
-            this.isShown = false
-        }
+  data() {
+    return {
+      isShown: true,
     }
-
+  },
+  methods: {
+    animateGmail() {
+      utilService.animateCSS(this.$refs.gmail, 'bounceIn')
+    },
+    animateKeep() {
+      utilService.animateCSS(this.$refs.keep, 'bounceIn')
+    },
+    animateBooks() {
+      utilService.animateCSS(this.$refs.books, 'bounceIn')
+    },
+    hideMainScreen() {
+      this.isShown = false
+    },
+  },
 }
