@@ -1,4 +1,4 @@
-import HomePage from './views/HomePage.js'
+// import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
 import AppBody from './cmps/AppBody.js'
 import NoteIndex from './apps/keep/pages/NoteIndex.js'
@@ -10,10 +10,10 @@ const { createRouter, createWebHashHistory } = VueRouter
 const routerOptions = {
   history: createWebHashHistory(),
   routes: [
-    {
-      path: '/',
-      component: HomePage,
-    },
+    // {
+    //   path: '/',
+    //   component: HomePage,
+    // },
     {
       path: '/about',
       component: AboutUs,
