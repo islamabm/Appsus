@@ -14,8 +14,8 @@ export default {
 
             <h1>MisterEmail</h1>
             
-            <MailFilter />
-            <!-- @filter = "setFilterBy" -->
+            <MailFilter v-if="emails" 
+            />
 
             <router-link to="/" class="back-button">Home</router-link>
 
@@ -26,7 +26,9 @@ export default {
           :emails="emails"
           />
 
-          <MailCreate @addNewEmail="addNewEmail" @closeModal="closeModal" v-if="isModalOpen"/>
+          <MailCreate @addNewEmail="addNewEmail" 
+          @closeModal="closeModal"
+           v-if="isModalOpen"/>
 
           <MailList
           @mark="toggelMarked"
@@ -49,7 +51,7 @@ export default {
       emails: [],
       filterBy: {
         status: 'inbox',
-        txt: 'puki', // no need to support complex text search
+        txt: '',
         isRead: true, // (optional property, if missing: show all)
         isStared: true, // (optional property, if missing: show all)
         lables: ['important', 'romantic'], // has any of the labels
@@ -60,10 +62,7 @@ export default {
     setFilterBy(filterBy) {
       this.filterBy.status = filterBy
     },
-    // showEmailDetails(emailId) {
-    //   this.isSelectedEmail = true
-    //   this.selectedEmail = this.emails.find((email) => email.id === emailId)
-    // },
+
     toggelMarked(emailId) {
       this.email = this.emails.find((email) => email.id === emailId)
       this.email.isRead = !this.email.isRead

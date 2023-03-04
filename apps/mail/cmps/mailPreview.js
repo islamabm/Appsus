@@ -34,13 +34,6 @@ export default {
             mailService.save(this.email)
         }
     },
-    // computed: {
-    //     emailStarClass() {
-    //         return {
-    //             starred : this.email.isStar,
-    //         }
-    //     }
-    // },
     components: {
         LongTxt,
         svgService,
