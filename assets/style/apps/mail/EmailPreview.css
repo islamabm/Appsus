@@ -4,7 +4,7 @@
 }
 
 .email-content {
-    margin-inline-start: 2em;
+    margin-left: 3em;
 }
 
 .email-preview-buttons button {
@@ -24,7 +24,15 @@
 }
 
 .email-subject {
-    width: 168px;
+    width: 150px;
     height: 20px;
     overflow: hidden;
+}
+
+.mail-nav-text {
+    margin-left: 20px;
+}
+
+.email-sent-at{
+    margin-left: 1em;
 }

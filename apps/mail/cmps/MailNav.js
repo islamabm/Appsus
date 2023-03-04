@@ -4,45 +4,68 @@ export default {
   template: `
         <nav class="mail-nav">
             <li @click="openCreateModal">
-                <div className="compose" 
+                <span className="compose" 
                 v-html="getSvg('compose')">
-                </div>
+                </span>
+              <span class="mail-nav-text">Compose</span>
             </li>
-            <RouterLink to="/sent"><li>
-            <div className="inbox" 
+            <li @click="filter('inbox')">
+            <span className="inbox" 
                 v-html="getSvg('inbox')">
-                </div>
-            </li></RouterLink>
-		    <li>
-            <div className="starFill" 
+                </span>
+                <span class="mail-nav-text">Inbox</span>
+            </li>
+		    <li @click="filter('stars')">
+            <span className="starFill" 
                 v-html="getSvg('starFill')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Starred</span>
             </li>
-		    <li>
-            <div className="sent" 
+		    <li @click="filter('sent')">
+            <span className="sent" 
                 v-html="getSvg('sent')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Sent</span>
             </li>
 		    <li>
-            <div className="draftsFill" 
+            <span className="draftsFill" 
                 v-html="getSvg('draftsFill')">
-                </div>
+                </span>
+                <span class="mail-nav-text">Drafts</span>
+            </li>
+		    <li @click="filter('trash')">
+            <span className="trash" 
+                v-html="getSvg('trash')">
+                </span>
+                <span class="mail-nav-text">Trash</span>
             </li>
         </nav>
     `,
+    data() {
+      return {
+        filterBy :{
+          status: 'sent',
+          txt: 'puki', // no need to support complex text search
+          isRead: true, // (optional property, if missing: show all)
+          isStared: true, // (optional property, if missing: show all)
+          lables: ['important', 'romantic'] // has any of the labels
+         },
+      }
+    },
   methods: {
     openCreateModal() {
       this.$emit("openCreateModal")
     },
     getSvg(iconName) {
         return svgService.getMailSvg(iconName)
-    },  
+    },
+    filter(status){
+      this.filterBy.status = status
+      console.log('clicked');
+      this.$emit('filter',this.filterBy.status)
+    }  
   },
   components: {
     svgService,
   },
 }
-/* <div className="compose" 
-    v-html="getSvg('compose')">
-    </div>
-    <span>Compose</span> */

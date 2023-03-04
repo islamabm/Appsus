@@ -1,7 +1,8 @@
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
-const EMAIL_KEY = 'mailDB'
+const EMAIL_KEY = "mailDB"
+const TRASH_KEY = "trashDB"
 
 _createEmails()
 
@@ -11,12 +12,13 @@ export const mailService = {
   remove,
   query,
   get,
+  saveTrash,
 }
 
 function query(filterBy = {}) {
   return storageService.query(EMAIL_KEY).then((emails) => {
     if (filterBy.txt) {
-      const regex = new RegExp(filterBy.txt, 'i')
+      const regex = new RegExp(filterBy.txt, "i")
       emails = emails.filter((email) => regex.test(email.title))
     }
     // if (filterBy.minSpeed) {
@@ -33,27 +35,97 @@ function get(emailId) {
 function _createEmails() {
   let emails = utilService.loadFromStorage(EMAIL_KEY)
   if (!emails || !emails.length) {
-    emails = []
-    for (var i = 0; i <= 12; i++) {
-      emails.push(_createEmail())
-    }
+    let date = new Date
+    const month = 'Mar'
+    const day = date.getDay()
+  
+    emails = [
+      {
+      id: utilService.makeId(),
+      subject: 'Hi! where are you?',
+      body: 'I want to see youuuuuuu, where you at? aloooooooooooooo',
+      isRead: false,
+      isStar: false,
+      sentAt: month + " " + day,
+      removedAt: null,
+      from: 'momo@momo.com',
+      to: 'user@appsus.com',
+      status: 'inbox',
+      },
+      {
+      id: utilService.makeId(),
+      subject: 'My name is Son Goku',
+      body: 'I want to chellenge you for a combat ya efes',
+      isRead: false,
+      isStar: false,
+      sentAt: month + " " + day,
+      removedAt: null,
+      from: 'momo@momo.com',
+      to: 'user@appsus.com',
+      status: 'trash',
+      },
+      {
+      id: utilService.makeId(),
+      subject: 'Peter Griffin',
+      body: 'I drove drunk and i need you to get me out from prison',
+      isRead: false,
+      isStar: false,
+      sentAt: month + " " + day,
+      removedAt: null,
+      from: 'momo@momo.com',
+      to: 'user@appsus.com',
+      status: 'inbox',
+      },
+      {
+      id: utilService.makeId(),
+      subject: 'alo alo alo alo',
+      body: 'Islam is the gever!',
+      isRead: false,
+      isStar: false,
+      sentAt: month + " " + day,
+      removedAt: null,
+      from: 'momo@momo.com',
+      to: 'user@appsus.com',
+      status: 'trash',
+      },
+      {
+      id: utilService.makeId(),
+      subject: 'rick',
+      body: 'Hi Morty! i need to take you to an adventure',
+      isRead: false,
+      isStar: false,
+      sentAt: month + " " + day,
+      removedAt: null,
+      from: 'momo@momo.com',
+      to: 'user@appsus.com',
+      status: 'inbox',
+      },
+    ]
+    // for (var i = 0; i <= 5; i++) {
+    //   emails.push(_createEmail())
+    // }
+
     utilService.saveToStorage(EMAIL_KEY, emails)
   }
 }
 
-function _createEmail() {
-  return {
-    id: utilService.makeId(),
-    subject: utilService.makeLorem(2),
-    body: utilService.makeLorem(),
-    isRead: false,
-    isStar: false,
-    sentAt: Date.now(),
-    removedAt: null,
-    from: 'momo@momo.com',
-    to: 'user@appsus.com',
-  }
-}
+// function _createEmail() {
+//   let date = new Date()
+//   const month = "Mar"
+//   const day = date.getDay()
+
+//   return {
+//     id: utilService.makeId(),
+//     subject: utilService.makeLorem(2),
+//     body: utilService.makeLorem(),
+//     isRead: false,
+//     isStar: false,
+//     sentAt: month + " " + day,
+//     removedAt: null,
+//     from: 'momo@momo.com',
+//     to: 'user@appsus.com',
+//   }
+// }
 
 function getMail(title = '', content = '') {
   return { id: '', title, content }
@@ -64,6 +136,13 @@ function save(email) {
     return storageService.put(EMAIL_KEY, email)
   } else {
     return storageService.post(EMAIL_KEY, email)
+  }
+}
+function saveTrash(email) {
+  if (email.id) {
+    return storageService.put(TRASH_KEY, email)
+  } else {
+    return storageService.post(TRASH_KEY, email)
   }
 }
 

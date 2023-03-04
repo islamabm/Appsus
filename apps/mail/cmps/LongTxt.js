@@ -22,8 +22,9 @@ export default {
     },
     computed: {
       handelTxtLength() {
-        if (this.txt.length > 80) {
-          return this.txt.slice(0, 70) + '...'
+        if(!this.txt) return
+        if (this.txt.length > 130) {
+          return this.txt.slice(0, 130) + '...'
         } else {return this.txt} 
       },
     },

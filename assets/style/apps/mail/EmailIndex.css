@@ -17,13 +17,20 @@
     border: none;
     background-color: rgb(237, 243, 251);
 }
+
+.mail-header input:focus {
+    outline: none;
+} 
+
 .search-div {
+    margin-top: 0.6em;
     border-radius: 8px;
-    margin-left: 80px;
+    margin-left: 150px;
     height: 3.3em;
     padding: 0;
     width: 25em;
     background-color: rgb(237, 243, 251);
+    margin-bottom: 10px;
 }
 
 .search-div input {
@@ -31,23 +38,11 @@
 }
 
 .mail-header h1{
+    margin-left: 50px;
     margin-top: 1em;
-    margin-left: 20px;
-    font-size: 25px;
+    font-size: 35px;
+    margin-bottom: 45px;
 }
-
-/* .yellow {
-    color: yellow;
-}
-.green {
-    color: green;
-}
-.blue {
-    color: blue;
-}
-.red {
-    color: red;
-} */
 
 .mail-nav {
     list-style: none;
@@ -60,6 +55,7 @@
 }
 
 .mail-nav li {
+    display: flex;
     cursor: pointer;
     margin-top: .5em;
     border-radius: 10px;

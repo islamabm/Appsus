@@ -4,28 +4,28 @@ import MailNav from "../cmps/MailNav.js"
 import MailDetails from "./MailDetails.js"
 import MailCreate from "../cmps/MailCreate.js"
 
-import {svgService} from "../../../services/SVG.service.js"
 import { mailService } from '../service/mail.service.js'
-import {showSuccessMsg} from '../../../services/event-bus.service.js'
+import {showSuccessMsg,showErrorMsg} from '../../../services/event-bus.service.js'
 import { utilService } from "../../../services/util.service.js"
 
 export default {
   template: `
         <header class="mail-header">
-            <!-- <div className="location" 
-                v-html="getSvg('location')">
-                </div> -->
+
             <h1>MisterEmail</h1>
 
-            <MailFilter @filter="setFilterBy"/>
+            <MailFilter/>
         </header>
         <main class="mail-main-content">
-          <MailNav @openCreateModal="openCreateModal"/>  
+          <MailNav @openCreateModal="openCreateModal"
+          @filter = "setFilterBy"
+          />
+
           <MailCreate @addNewEmail="addNewEmail" @closeModal="closeModal" v-if="isModalOpen"/>
 
           <MailList
+          @mark="toggelMarked"
           @deleteEmail="deleteEmail"
-          @mark="markAsUnRead"
           :emails="filteredEmails"/>
           
         </main> 
@@ -41,26 +41,29 @@ export default {
       selectedEmail: null,
       isModalOpen: false,
       emails: [],
-      filterBy: { title: "" },
+      filterBy :{
+        status: 'inbox',
+        txt: 'puki', // no need to support complex text search
+        isRead: true, // (optional property, if missing: show all)
+        isStared: true, // (optional property, if missing: show all)
+        lables: ['important', 'romantic'] // has any of the labels
+       },
     }
   },
   methods: {
-    getSvg(iconName) {
-      return svgService.getSvg(iconName)
-    },  
+    // setFilterBy(filterBy) {
+    //   this.filterBy = filterBy
+    // },
     setFilterBy(filterBy) {
-      this.filterBy = filterBy
+      this.filterBy.status = filterBy
     },
     showEmailDetails(emailId) {
-      console.log(emailId)
       this.selectedEmail = this.emails.find((email) => email.id === emailId)
-      console.log(this.selectedEmail)
     },
-    markAsUnRead(emailId) {
-      console.log(emailId);
+    toggelMarked(emailId) {
       this.email = this.emails.find(email => email.id === emailId)
-      console.log(this.email);
-      this.email.isRead = true
+      this.email.isRead = !this.email.isRead
+      mailService.save(this.email)
     },
     openCreateModal() {
       this.isModalOpen = true
@@ -69,41 +72,46 @@ export default {
       this.isModalOpen = false
     },
     addNewEmail(to,title,body) {
+      if(!title || !body) return showErrorMsg('Error: Need to fill the lines')
+      let date = new Date
+      const month = 'Mar'
+      const day = date.getDay()
+    
       const newEmail = {
         id: utilService.makeId(),
         subject: title,
         body:  body,
         isRead: false,
         isStar: false,
-        sentAt: Date.now(),
+        sentAt: month + ' ' + day,
         removedAt: null,
         from: "momo@momo.com",
         to: to,
+        status: 'sent',
       }
-      this.emails.push(newEmail)
+      this.emails.unshift(newEmail)
       mailService.save(newEmail)
       .then(() => {
         showSuccessMsg('Email Added')
-    })
+      })
     },
     deleteEmail(emailId) {
       mailService.remove(emailId).then(() => {
         const idx = this.emails.findIndex((email) => email.id === emailId)
         this.emails.splice(idx, 1)
        showSuccessMsg('Email Deleted')
-    })
-  },
+      })
+    },
   },
   computed: {
     filteredEmails() {
-      const regex = new RegExp(this.filterBy.body, 'i')
-      return this.emails.filter((email) => regex.test(email.body))
+      const regex = new RegExp(this.filterBy.status, 'i')
+      return this.emails.filter((email) => regex.test(email.status))
     },
   },
   created() {
     mailService.query().then((emails) => (this.emails = emails))
   },
-
 
   components: {
     MailList,
@@ -111,6 +119,5 @@ export default {
     MailNav,
     MailDetails,
     MailCreate,
-    svgService,
   },
 }

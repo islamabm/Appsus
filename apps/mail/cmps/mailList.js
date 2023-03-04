@@ -5,12 +5,12 @@ import {svgService} from "../../../services/SVG.service.js"
 export default {
   props: ["emails"],
   template: `   
-            <ul class="mail-list" v-for="email in emails">
+            <ul class="mail-list" v-for="email in emails" :class="{'read':email.isRead}">
                 <li @click="mark(email.id)">
                     <MailPreview :email="email"/>
                 <div class="email-preview-buttons">
                 <button>📩</button>
-                <button @click="deleteEmail(email.id)">
+                <button @click.stop="deleteEmail(email.id)">
                   <div className="trash" 
                   v-html="getSvg('trash')">
                   </div>
@@ -25,17 +25,10 @@ export default {
 
   methods: {
     deleteEmail(emailId) {
-      console.log(emailId)
       this.$emit("deleteEmail", emailId)
     },
     mark(emailId) {
-      const email = this.emails.filter((email) => email.id === emailId)
-      email.isRead = true
-      console.log(emailId)
       this.$emit("mark", emailId)
-    },
-    openCloseModal() {
-        console.log('hi');
     },
     getSvg(iconName) {
       return svgService.getMailSvg(iconName)
