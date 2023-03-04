@@ -1,10 +1,9 @@
 import HomePage from './views/HomePage.js'
 import AboutUs from './views/AboutUs.js'
+import AppBody from './cmps/AppBody.js'
 import NoteIndex from './apps/keep/pages/NoteIndex.js'
 import EmailIndex from './apps/mail/pages/EmailIndex.js'
 import mailDetails from './apps/mail/pages/mailDetails.js'
-
-
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -24,14 +23,18 @@ const routerOptions = {
       component: EmailIndex,
       children: [
         {
-            path: '/details/:id',
-            component: mailDetails
+          path: '/details/:id',
+          component: mailDetails,
         },
-    ]
+      ],
     },
     {
       path: '/keep',
       component: NoteIndex,
+    },
+    {
+      path: '/body',
+      component: AppBody,
     },
   ],
 }

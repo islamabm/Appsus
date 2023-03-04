@@ -27,11 +27,3 @@ export default {
     TodosPreview,
   },
 }
-{/* <template>
-  <div class="todo-list">
-    <div v-for="(todo, index) in todos" :key="index" class="todo-item">
-      <p>{{ todo }}</p>
-      <button @click="removeTodo(index)">X</button>
-    </div>
-  </div>
-</template> */}

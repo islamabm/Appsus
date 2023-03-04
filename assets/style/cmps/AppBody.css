@@ -1,4 +1,4 @@
-.body-img {
+/* .body-img {
     width: 200px;
     height: 200px;
 }
@@ -9,8 +9,12 @@
     width: 200px;
     margin-top: 140px;
 }
-/* .img-container:hover {
-} */
+.img-container {
+    grid-row: 2;
+    cursor: pointer;
+    width: 200px;
+    margin-top: 140px;
+}
 
 .body-header {
     background-color: gainsboro;
@@ -36,4 +40,100 @@
     height: 3em;
     text-align: center;
 }
+ */
+/* Main body container */
+.app-body-layout {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
 
+/* Image container */
+.img-container {
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+/* Image animation */
+.body-img {
+  transition: transform 0.5s ease-in-out;
+}
+
+.body-img:hover {
+  transform: scale(1.2);
+}
+
+/* Footer container */
+.body-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 20px;
+  color: #333;
+}
+
+/* Animation classes */
+.bounceIn {
+  animation-name: bounceIn;
+  animation-duration: 0.75s;
+}
+
+@keyframes bounceIn {
+  0% {
+    transform: scale(0.1);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.img-container {
+  width: 200px;
+}
+.body-header {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Header title */
+.body-header h1 {
+  margin: 0;
+  color: #333;
+}
+
+/* Footer container */
+.body-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin: 20px;
+  color: #333;
+}
+
+/* Footer paragraph */
+.body-footer p {
+  margin: 0;
+}
+
+/* Footer link */
+.body-footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+/* Footer link hover */
+.body-footer a:hover {
+  text-decoration: underline;
+}

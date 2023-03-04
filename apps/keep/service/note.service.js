@@ -95,8 +95,6 @@ function _createNotes() {
     notes.push(_createTxtNote())
     notes.push(_createTodosNote())
     notes.push(_createTodosNote())
-    notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
     notes.push(_createImgNotes())
     notes.push(_createVideoNote())
     notes.push(_createAudioNote())
