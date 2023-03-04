@@ -38,7 +38,7 @@ export default {
             txt: 'Book saved',
             type: 'success',
           })
-          this.$router.push('/book')
+          this.$router.push('/books')
         })
 
         .catch((err) => {

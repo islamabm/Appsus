@@ -1,13 +1,14 @@
 import { bookService } from '../services/book.service.js'
 import { eventBus } from '../../../services/event-bus.service.js'
-
+import AppHeader from '../cmps/AddHeader.js'
 import BookList from '../cmps/BookList.js'
 import BookFilter from '../cmps/BookFilter.js'
 
 export default {
   template: `
+         <AppHeader></AppHeader>
         <section class="book-index">
-        <RouterLink to="/book/edit">Add a Book</RouterLink><img class="add-book-icon" src="/icons/add.png" />
+        <RouterLink to="/books/edit">Add a Book</RouterLink><img class="add-book-icon" src="/icons/add.png" />
         <BookFilter @filter="setFilterBy"/>
          <BookList
          :books="filteredBooks" 
@@ -18,7 +19,7 @@ export default {
   data() {
     return {
       books: null,
-      filterBy: { title: '', maxPrice: 500, rate: 0, createdAt: 2022 },
+      filterBy: { title: '', maxPrice: 500, createdAt: 2022 },
     }
   },
   methods: {
@@ -48,34 +49,15 @@ export default {
   computed: {
     filteredBooks() {
       const regex = new RegExp(
-        this.filterBy.title &&
-          this.filterBy.maxPrice &&
-          this.filterBy.createdAt,
-        'i'
+        this.filterBy.title && this.filterBy.maxPrice && 'i'
       )
       return this.books.filter(
         (book) =>
           regex.test(book.title) &&
-          this.filterBy.maxPrice >= book.listPrice.amount &&
-          this.filterBy.createdAt >= book.publishedDate
+          this.filterBy.maxPrice >= book.listPrice.amount
       )
     },
   },
-  // filteredBooks() {
-  //   return this.books
-  //   const regex = new RegExp(
-  //     this.filterBy.title &&
-  //       this.filterBy.maxPrice &&
-  //       this.filterBy.createdAt,
-  //     'i'
-  //   )
-  //   return this.books.filter(
-  //     (book) =>
-  //       regex.test(book.title) &&
-  //       this.filterBy.maxPrice >= book.listPrice.amount &&
-  //       this.filterBy.createdAt >= book.publishedDate
-  //   )
-  // },
 
   created() {
     bookService.query().then((books) => {
@@ -85,5 +67,6 @@ export default {
   components: {
     BookFilter,
     BookList,
+    AppHeader,
   },
 }

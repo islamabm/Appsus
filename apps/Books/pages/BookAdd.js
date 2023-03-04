@@ -2,6 +2,9 @@ import { bookService } from '../services/book.service.js'
 import { googleBookService } from '../services/google-book.service.js'
 export default {
   template: `
+       <section class="back-to-books-from-add-book">
+        <RouterLink to="/books">Go Back To Books</RouterLink>
+      </section>
           <section class="home-page">
             <form  @submit.prevent="search">
                 <input v-model="txt" class="search-api-input" type="text" placeholder="search">

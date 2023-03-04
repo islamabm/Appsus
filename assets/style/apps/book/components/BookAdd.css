@@ -3,3 +3,13 @@
   border: 1px solid black;
   width: 30vw;
 }
+.back-to-books-from-add-book {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #e91e63;
+  color: white;
+}
+button {
+  color: black;
+}

@@ -7,8 +7,9 @@ export default {
         <ul  class="clean-list">
                 <li class="book-display"  v-for="book in books" :key="book.id">
                 <BookPreview :book="book"/>
-                <button class="details-btn"  class="glow-on-hover"> <RouterLink :to="'/book/'+book.id">Details</RouterLink></button>
-                <RouterLink class="edit-book-btn" :to="'/book/edit/'+book.id">Edit</RouterLink> 
+                <button class="details-btn"  class="glow-on-hover">
+                   <RouterLink :to="'/books/'+book.id">Details</RouterLink></button>
+                <RouterLink class="edit-book-btn" :to="'/books/edit/'+book.id">Edit</RouterLink> 
                 <button class="remove-book-btn" @click="remove(book.id)"><img class="delete-book-icon" src="ICONS/trash.png" /></button>
                 </li>
         </ul>

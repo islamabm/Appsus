@@ -17,26 +17,11 @@ export default {
                   type="range" 
                   :title="this.filterBy.maxPrice"
                   />
-                  <label>rating</label>
-                  <input 
-                  v-model="filterBy.rate"
-                  @input="filter" 
-                  placeholder="Book Rate"
-                  max="5"
-                  min="1"
-  
-                  type="number" />
-                  <label>By published Year</label>
-                  <input 
-                  v-model="filterBy.createdAt"
-                  @input="filter" 
-                  placeholder="year of created"
-                  type="number" />
           </section>
       `,
   data() {
     return {
-      filterBy: { title: '', maxPrice: 500, rate: 0, createdAt: 2022 },
+      filterBy: { title: '', maxPrice: 500, createdAt: 2022 },
       isFilter: false,
     }
   },

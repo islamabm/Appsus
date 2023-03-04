@@ -17,10 +17,10 @@ export default {
             <h5 v-bind:class="PriceClass">{{formattedPrice}}</h5>
             <h5 v-if="book.listPrice.isOnSale">ON SALE📌</h5>
 
-            <RouterLink :to="'/book/' + book.prevBookId">Previous Book</RouterLink> |
-            <RouterLink :to="'/book/' + book.nextBookId">Next Book</RouterLink>
+            <RouterLink :to="'/books/' + book.prevBookId">Previous Book</RouterLink> |
+            <RouterLink :to="'/books/' + book.nextBookId">Next Book</RouterLink>
                 <hr />
-          <RouterLink to="/book">Go Back To Books</RouterLink>
+          <RouterLink to="/books">Go Back To Books</RouterLink>
        </section>
           <AddReview @add-review="onAddReview"/>
         <article  v-if=" book && book.reviews " v-for="review in book.reviews" :key="review.fullname">

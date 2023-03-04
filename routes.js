@@ -14,13 +14,10 @@ const { createRouter, createWebHashHistory } = VueRouter
 const routerOptions = {
   history: createWebHashHistory(),
   routes: [
-<<<<<<< HEAD
     {
       path: '/',
       component: AppBody,
     },
-=======
->>>>>>> 49ed39dc3d00c230233c1ae256abb62ff1ef5241
     {
       path: '/about',
       component: AboutUs,
@@ -39,9 +36,6 @@ const routerOptions = {
       path: '/keep',
       component: NoteIndex,
     },
-<<<<<<< HEAD
-
-=======
     {
       path: '/body',
       component: AppBody,
@@ -63,7 +57,6 @@ const routerOptions = {
       component: BookAdd,
     },
     // Last fallback if no route was matched:
->>>>>>> 49ed39dc3d00c230233c1ae256abb62ff1ef5241
   ],
 }
 

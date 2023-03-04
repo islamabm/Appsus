@@ -92,7 +92,6 @@ function _createNotes() {
   if (!notes || !notes.length) {
     notes = []
     notes.push(_createTxtNote())
-    notes.push(_createTxtNote())
     notes.push(_createTodosNote())
     notes.push(_createTodosNote())
     notes.push(_createImgNotes())
