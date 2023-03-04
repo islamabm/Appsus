@@ -13,8 +13,12 @@ export default {
         <header class="mail-header">
 
             <h1>MisterEmail</h1>
+            
+            <MailFilter />
+            <!-- @filter = "setFilterBy" -->
 
-            <MailFilter/>
+            <router-link to="/" class="back-button">Home</router-link>
+
         </header>
         <main class="mail-main-content">
           <MailNav @openCreateModal="openCreateModal"
@@ -51,9 +55,7 @@ export default {
     }
   },
   methods: {
-    // setFilterBy(filterBy) {
-    //   this.filterBy = filterBy
-    // },
+
     setFilterBy(filterBy) {
       this.filterBy.status = filterBy
     },
@@ -98,8 +100,12 @@ export default {
     deleteEmail(emailId) {
       mailService.remove(emailId).then(() => {
         const idx = this.emails.findIndex((email) => email.id === emailId)
-        this.emails.splice(idx, 1)
-       showSuccessMsg('Email Deleted')
+        if(this.emails[idx].status !== 'trash'){
+            this.emails[idx].status = 'trash'
+        } else {
+          this.emails.splice(idx, 1)
+         showSuccessMsg('Email Deleted')
+        }
       })
     },
   },

@@ -76,3 +76,10 @@
     width: 20px;
     margin-top: 10px;
 }
+
+.back-button {
+    width: 20px;
+    margin-left: 200px;
+    font-size: 22px;
+    text-decoration: underline;
+}
