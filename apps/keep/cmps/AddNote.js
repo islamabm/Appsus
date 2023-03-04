@@ -25,7 +25,7 @@ export default {
           <button title="txt" class="user-btn" @click="selectedNote='NoteTxt'">✏</button>
           <button title="video" class="user-btn" @click="selectedNote='NoteVideo'">🎥</button>
           <button title="todos" class="user-btn" @click="selectedNote='NoteTodos'">📃</button>
-          <button title="todos" class="user-btn" @click="selectedNote='NoteAudio'">a</button>
+          <button title="todos" class="user-btn" @click="selectedNote='NoteAudio'">🎙</button>
      </section>
     </div>
  </section>

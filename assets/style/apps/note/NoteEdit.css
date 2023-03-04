@@ -1,7 +1,8 @@
 .notes-list {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 150px));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 250px));
   gap: 10px;
+  height: max-content;
 }
 .edit-modal {
   margin: auto;

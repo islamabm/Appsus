@@ -5,7 +5,7 @@ export default {
          type="url" 
          v-model="info.url" 
          @input="AddVideoUrl" 
-         placeholder="Enter Video Url..." 
+         placeholder="Enter Audio Url..." 
          autofocus />
       `,
   data() {

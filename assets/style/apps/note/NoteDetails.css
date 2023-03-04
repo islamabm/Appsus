@@ -44,3 +44,10 @@
   max-height: 80vh;
   overflow-y: auto;
 }
+.display-btns {
+  opacity: 0;
+  transition: opacity 0.8s;
+}
+.user-input-container:hover .display-btns {
+  opacity: 1;
+}

@@ -1,10 +1,12 @@
 export default {
   props: ['todo'],
   template: `
-        <article class="todo-preview">
-         <h5 @click="todoDone" :class="txtClass" class="todos-txt">{{todo.txt}}</h5>
+        <!-- <article class="todo-preview"> -->
+         <div>
          <button class="remove-todo-txt" @click.prevent="removeTodo">X</button>
-        </article>
+          <h5 @click="todoDone" :class="txtClass" class="todos-txt">{{todo.txt}}</h5>
+         </div>
+        <!-- </article> -->
     `,
   data() {
     return {

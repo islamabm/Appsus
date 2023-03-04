@@ -1,3 +1,13 @@
 .note-txt {
   cursor: pointer;
 }
+.remove-todo-txt {
+  border: none;
+  background-color: transparent;
+  float: right;
+}
+.remove-todo-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
