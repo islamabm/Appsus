@@ -1,0 +1,24 @@
+export default {
+  template: `
+           <input  
+           class="input-user-note-type"  
+           type="url" 
+           v-model="info.url" 
+           @input="AddAudioUrl" 
+           placeholder="Enter Audio Url..." 
+           autofocus />
+        `,
+  data() {
+    return {
+      info: {
+        title: '',
+        url: '',
+      },
+    }
+  },
+  methods: {
+    AddAudioUrl() {
+      this.$emit('updateInfo', this.info)
+    },
+  },
+}

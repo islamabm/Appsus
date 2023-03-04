@@ -3,7 +3,8 @@ import NoteTxtAdd from './AddNotes/NoteTxtAdd.js'
 import NoteImgAdd from './AddNotes/NoteImgAdd.js'
 import NoteTodosAdd from './AddNotes/NoteTodosAdd.js'
 import NoteVideoAdd from './AddNotes/NoteVideoAdd.js'
-
+import NoteAudioAdd from './AddNotes/NoteAudioAdd.js'
+import { svgService } from '../../../services/SVG.service.js'
 export default {
   template: `
 <section class="add-note-component">
@@ -24,6 +25,7 @@ export default {
           <button title="txt" class="user-btn" @click="selectedNote='NoteTxt'">✏</button>
           <button title="video" class="user-btn" @click="selectedNote='NoteVideo'">🎥</button>
           <button title="todos" class="user-btn" @click="selectedNote='NoteTodos'">📃</button>
+          <button title="todos" class="user-btn" @click="selectedNote='NoteAudio'">a</button>
      </section>
     </div>
  </section>
@@ -50,11 +52,15 @@ export default {
       console.log(this.note.type)
       this.note.info = info
     },
+    getSvg(iconName) {
+      return svgService.getSvg(iconName)
+    },
   },
   components: {
     NoteImgAdd,
     NoteTxtAdd,
     NoteTodosAdd,
     NoteVideoAdd,
+    NoteAudioAdd,
   },
 }

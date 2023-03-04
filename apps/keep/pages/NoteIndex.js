@@ -3,11 +3,18 @@ import { noteService } from '../service/note.service.js'
 import NoteList from '../cmps/NoteList.js'
 import NoteHeader from '../cmps/NoteHeader.js'
 import AddNote from '../cmps/AddNote.js'
+// import NoteDetails from './NoteDetails.js'
 import { showSuccessMsg } from '../../../services/event-bus.service.js'
 // import NoteNav from '../cmps/NoteNav.js'
 export default {
   template: `
+  
         <NoteHeader></NoteHeader>
+
+
+<!-- <NoteDetails
+:notes="notes"
+></NoteDetails> -->
         <!-- <NoteNav></NoteNav> -->
         <AddNote 
         @saveNote="addNote"
@@ -16,7 +23,8 @@ export default {
          @note-todos-saved="onSaveTodosNote"
        
         />
-        
+
+
         <!-- <section class="note-index"> -->
 
           <section class="notes-container">
@@ -32,6 +40,8 @@ export default {
       msg: 'Enter...',
       noteTxt: '',
       notes: [],
+      showModal: false,
+      modalTitle: 'My Modal',
     }
   },
   methods: {
@@ -42,24 +52,6 @@ export default {
         showSuccessMsg(`${note.type} Addded`)
       })
     },
-    // onSaveNote(txt) {
-    //   const note = noteService.getEmptyTxtNote(txt)
-    //   noteService.save(note).then((savedNote) => {
-    //     this.notes.unshift(savedNote)
-    //   })
-    // },
-    // onSaveImgNote(url) {
-    //   const note = noteService.getEmptyImgNote(url)
-    //   noteService.save(note).then((savedNote) => {
-    //     this.notes.unshift(savedNote)
-    //   })
-    // },
-    // onSaveTodosNote(todos) {
-    //   const note = noteService.getEmptyTodosNote(todos)
-    //   noteService.save(note).then((savedNote) => {
-    //     this.notes.unshift(savedNote)
-    //   })
-    // },
   },
   created() {
     noteService.query().then((notes) => (this.notes = notes))
@@ -69,9 +61,8 @@ export default {
     NoteList,
     NoteHeader,
     AddNote,
+    // NoteDetails,
+
     // NoteNav,
   },
 }
-// @note-saved="onSaveNote"
-// @note-img-saved="onSaveImgNote"
-// @note-todos-saved="onSaveTodosNote"

@@ -32,3 +32,10 @@
   background-color: transparent;
   border: none;
 }
+.color-picker-colors {
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.note-container:hover .color-picker-colors {
+  opacity: 1;
+}

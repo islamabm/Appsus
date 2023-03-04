@@ -1,6 +1,6 @@
 export default {
   template: `
-  <div>
+  <div class="color-picker-colors">
     <div class="color-picker">
       <div class="color" v-for="(color, index) in colors" :key="index" @click="selectColor(color)" :style="{ backgroundColor: color }"></div>
     </div>

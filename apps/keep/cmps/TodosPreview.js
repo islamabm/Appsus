@@ -3,7 +3,7 @@ export default {
   template: `
         <article class="todo-preview">
          <h5 @click="todoDone" :class="txtClass" class="todos-txt">{{todo.txt}}</h5>
-         <h5 v-if:="todo.doneAt">{{todo.doneAt}}</h5>
+         <button class="remove-todo-txt" @click.prevent="removeTodo">X</button>
         </article>
     `,
   data() {
@@ -15,7 +15,12 @@ export default {
     todoDone() {
       this.isDone = !this.isDone
     },
+
+    removeTodo() {
+      this.$emit('removeTodo', this.todo.id)
+    },
   },
+
   computed: {
     txtClass() {
       return {

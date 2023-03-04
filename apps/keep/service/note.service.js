@@ -1,6 +1,5 @@
 'use strict'
 
-// import { utilService } from '../services/util.service.js'
 import { utilService } from '../../../services/util.service.js'
 import { storageService } from '../../../services/async-storage.service.js'
 
@@ -13,7 +12,6 @@ export const noteService = {
   get,
   remove,
   save,
-  // getEmptyNote,
   getEmptyTxtNote,
   getEmptyImgNote,
   getEmptyTodosNote,
@@ -21,13 +19,6 @@ export const noteService = {
 
 function query(filterBy = {}) {
   return storageService.query(NOTE_KEY).then((notes) => {
-    // if (filterBy.txt) {
-    //   const regex = new RegExp(filterBy.txt, 'i')
-    //   cars = cars.filter((car) => regex.test(car.vendor))
-    // }
-    // if (filterBy.minSpeed) {
-    //     notes = notes.filter((note) => note.maxSpeed >= filterBy.minSpeed)
-    // }
     return notes
   })
 }
@@ -40,26 +31,22 @@ function remove(noteId) {
   return storageService.remove(NOTE_KEY, noteId)
 }
 
+// function save(note) {
+//   if (note.id) {
+//     return storageService.put(NOTE_KEY, note)
+//   } else {
+//     return storageService.post(NOTE_KEY, note)
+//   }
+// }
 function save(note) {
-  if (note.id) {
-    return storageService.put(NOTE_KEY, note)
-  } else {
-    return storageService.post(NOTE_KEY, note)
-  }
+  return note.id
+    ? storageService.put(NOTE_KEY, note)
+    : storageService.post(NOTE_KEY, note)
 }
-// id: utilService.makeId(),
-// createdAt: Date.now(),
-// type: 'NoteTxt',
-// isPinned: true,
-// style: {
-//   backgroundColor: '#00d',
-// },
-// info: {
-//   txt: 'Fullstack Me Baby!',
-// },
+
 function getEmptyTxtNote(txt = '') {
   return {
-    id: utilService.makeId(),
+    // id: utilService.makeId(),
     createdAt: Date.now(),
     type: 'NoteTxt',
     isPinned: true,
@@ -95,39 +82,10 @@ function getEmptyTodosNote(todos = []) {
     type: 'NoteTodos',
     isPinned: true,
     info: {
-      // title: 'Get my stuff together',
       todos: todos,
     },
   }
 }
-
-// function getEmptyTodosNote(todos = '') {
-//   return {
-//     id: utilService.makeId(),
-//     createdAt: Date.now(),
-//     type: 'NoteTodos',
-//     isPinned: true,
-//     info: {
-//       title: 'Get my stuff together',
-//       todos: [
-//         { txt: 'Driving license', doneAt: null },
-//         { txt: 'Coding power', doneAt: 187111111 },
-//       ],
-//     },
-//   }
-// }
-
-// function _createNotes() {
-//   let notes = utilService.loadFromStorage(NOTE_KEY)
-//   if (!notes || !notes.length) {
-//     notes = []
-//     notes.push(_createNote('txt', 300))
-//     notes.push(_createNote('canvas', 120))
-//     notes.push(_createNote('audio', 100))
-//     notes.push(_createNote('video', 150))
-//     utilService.saveToStorage(NOTE_KEY, notes)
-//   }
-// }
 
 function _createNotes() {
   let notes = utilService.loadFromStorage(NOTE_KEY)
@@ -141,6 +99,7 @@ function _createNotes() {
     notes.push(_createTxtNote())
     notes.push(_createImgNotes())
     notes.push(_createVideoNote())
+    notes.push(_createAudioNote())
     utilService.saveToStorage(NOTE_KEY, notes)
   }
 }
@@ -167,6 +126,9 @@ function _createTodosNote() {
     createdAt: Date.now(),
     type: 'NoteTodos',
     isPinned: true,
+    style: {
+      backgroundColor: 'yellow',
+    },
     info: {
       title: 'Get my stuff together',
       todos: [
@@ -178,14 +140,10 @@ function _createTodosNote() {
 }
 
 function _createTxtNote() {
-  // const note ={
-
-  //   note.id = utilService.makeId(),
-  // }
-
   return {
-    id: utilService.makeId(),
+    // id: utilService.makeId(),
     createdAt: Date.now(),
+    // updatedAt: null,
     type: 'NoteTxt',
     isPinned: true,
     style: {
@@ -204,11 +162,27 @@ function _createVideoNote() {
     type: 'NoteVideo',
     isPinned: true,
     style: {
-      backgroundColor: '#00d',
+      backgroundColor: '#F44336',
     },
     info: {
       url: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
       title: 'loli and me',
+    },
+  }
+}
+
+function _createAudioNote() {
+  return {
+    id: utilService.makeId(),
+    createdAt: Date.now(),
+    type: 'NoteAudio',
+    isPinned: true,
+    style: {
+      backgroundColor: '#00BCD4',
+    },
+    info: {
+      url: 'http://commondatastorage.googleapis.com/codeskulptor-assets/Evillaugh.ogg',
+      title: 'I Love Audio',
     },
   }
 }

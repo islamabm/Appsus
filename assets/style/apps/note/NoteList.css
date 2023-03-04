@@ -9,3 +9,7 @@
 .note-txt p {
   color: black;
 }
+
+.remove-todo-btn {
+  margin-bottom: 0;
+}
