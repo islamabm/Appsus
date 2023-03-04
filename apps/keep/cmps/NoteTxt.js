@@ -4,7 +4,7 @@ export default {
   props: ['info'],
   template: `
 
-      <section @click="noteClicked" class="note-txt note">
+      <section class="note-txt note">
           <p  @click="editTxt">{{(isEdit)? txt: info.txt}}</p>
             <!-- <button @click="editTxt">edit</button> -->
       </section>

@@ -1,0 +1,19 @@
+.about-img {
+  width: 40%;
+  margin-inline-start: 300px;
+}
+.txt-img {
+  margin-inline-start: 100px;
+}
+.about-header,
+.home-header {
+  text-align: center;
+}
+.services-img {
+  width: 50%;
+}
+.about-services-page {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+}

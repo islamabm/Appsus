@@ -1,0 +1,23 @@
+.app-header {
+  color: var(--clr2);
+  background-color: var(--clr3);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+}
+.main-menu {
+  display: grid;
+  grid-auto-flow: column;
+  gap: 100px;
+}
+.main-menu a {
+  color: var(--clr2);
+}
+.main-menu a:last-child {
+  margin-inline-end: 5px;
+}
+
+.header-link:hover {
+  color: var(--clr18);
+}

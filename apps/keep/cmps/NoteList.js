@@ -16,8 +16,7 @@ export default {
             <li :style="note.style" class="note-container" v-for="note in notes" :key="note.id">
             <button class="remove-todo-btn" @click="remove(note.id)">
           <img class="trash-icon" src="icons/trash.png" /></button>
-          <button class="duplicate-todo-btn" @click="duplicate(note.id)">
-          <span class="duplicate-icon" className="bars"  v-html="getSvg('bars')"></span></button>
+
           <!-- <button class="pin-todo-btn" @click="pin(note.id)">
           <span class="settings-icon" className="pin"  v-html="getSvg('pin')"></span></button> -->
                
@@ -27,10 +26,12 @@ export default {
           :info="note.info"
           @noteUpdated="updateNote($event, note.id)" 
 					></Component>
-
+          <button class="duplicate-todo-btn" @click="duplicate(note.id)">
+          <span class="duplicate-icon" className="dup"  v-html="getSvg('dup')"></span></button>
           <ColorPicker 
           @selected="changeColor($event, note.id)"
          >
+
         </li>
       </ul>
 

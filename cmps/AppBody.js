@@ -22,7 +22,8 @@ export default {
             </div>
                 
             <div @click="hideMainScreen" ref="books" class="img-container">
-            <a @click="animateBooks"><img class="body-img" src="https://img.utdstc.com/icon/977/53c/97753c818561906c705eae21974189c9eb08472089817215bb68c75453fd9bd8:200"></a>
+            <router-link to="/books">
+            <a @click="animateBooks"><img class="body-img" src="https://img.utdstc.com/icon/977/53c/97753c818561906c705eae21974189c9eb08472089817215bb68c75453fd9bd8:200"></a></router-link>
             </div>
         </div>
         

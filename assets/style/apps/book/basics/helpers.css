@@ -1,0 +1,12 @@
+.clean-list {
+  list-style-type: none;
+}
+.clean-link {
+  text-decoration: none;
+}
+.red {
+  color: var(--clr15);
+}
+.green {
+  color: var(--clr16);
+}

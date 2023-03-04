@@ -20,10 +20,6 @@ export default {
                 v-html="getSvg('search')">
                 </span></div>
                
-             <div>
-             <span class="settings-icon" className="settings" 
-                v-html="getSvg('settings')"></span>
-              </div>
               
             <router-link to="/" class="back-home-button">Home</router-link>
             
