@@ -9,14 +9,12 @@ export default {
                 <li @click="mark(email.id)">
                     <MailPreview :email="email"/>
                 <div class="email-preview-buttons">
-                <button>📩</button>
                 <button @click.stop="deleteEmail(email.id)">
                   <div className="trash" 
                   v-html="getSvg('trash')">
                   </div>
                 </button>
-                <button @click="mark(email.id)">✉</button>
-                <button>🕔</button>
+                <button @click.stop="mark(email.id)">✉</button>
                 </div>    
                 </li>
                  

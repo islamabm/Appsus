@@ -1,6 +1,7 @@
 import {svgService} from "../../../services/SVG.service.js"
 
 export default {
+  props: ['emails'],
   template: `
         <nav class="mail-nav">
             <li @click="openCreateModal">
@@ -14,35 +15,45 @@ export default {
             <span className="inbox" 
                 v-html="getSvg('inbox')">
                 </span>
-                <span class="mail-nav-text">Inbox</span>
+                <span class="mail-nav-text">Inbox
+                  <span class="email-num">{{getNumOfEmails('inbox')}}</span> 
+                   </span>
             </li>
 		    
-            <li @click="filter('stars')">
+            <li @click="filter('Starred')">
             <span className="starFill" 
                 v-html="getSvg('starFill')">
                 </span>
-                <span class="mail-nav-text">Starred</span>
+                <span class="mail-nav-text">Starred
+                <span class="email-num">{{getNumOfEmails('starred')}}</span> 
+                </span>
             </li>
 		    
             <li @click="filter('sent')">
             <span className="sent" 
                 v-html="getSvg('sent')">
                 </span>
-                <span class="mail-nav-text">Sent</span>
+                <span class="mail-nav-text">Sent
+                <span class="email-num">{{getNumOfEmails('sent')}}</span> 
+                </span>
             </li>
 		    
             <li @click="filter('drafts')">
             <span className="draftsFill" 
                 v-html="getSvg('draftsFill')">
                 </span>
-                <span class="mail-nav-text">Drafts</span>
+                <span class="mail-nav-text">Drafts
+                <span class="email-num">{{getNumOfEmails('drafts')}}</span> 
+                </span>
             </li>
 		    
             <li @click="filter('trash')">
             <span className="trash" 
                 v-html="getSvg('trash')">
                 </span>
-                <span class="mail-nav-text">Trash</span>
+                <span class="mail-nav-text">Trash
+                  <span class="email-num">{{getNumOfEmails('trash')}}</span>
+                </span>
               </li>
         </nav>
     `,
@@ -67,7 +78,11 @@ export default {
     filter(status){
       this.filterBy.status = status
       this.$emit('filter',this.filterBy.status)
-    }  
+    },
+    getNumOfEmails(status) {
+        let emailCount = this.emails.filter(email => email.status === status)
+        return emailCount.length
+    },  
   },
   components: {
     svgService,

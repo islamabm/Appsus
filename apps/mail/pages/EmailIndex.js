@@ -5,10 +5,7 @@ import MailDetails from './MailDetails.js'
 import MailCreate from '../cmps/MailCreate.js'
 
 import { mailService } from '../service/mail.service.js'
-import {
-  showSuccessMsg,
-  showErrorMsg,
-} from '../../../services/event-bus.service.js'
+import {showSuccessMsg} from '../../../services/event-bus.service.js'
 import { utilService } from '../../../services/util.service.js'
 
 export default {
@@ -20,12 +17,13 @@ export default {
             <MailFilter />
             <!-- @filter = "setFilterBy" -->
 
-            <router-link to="/body" class="back-button">Home</router-link>
+            <router-link to="/" class="back-button">Home</router-link>
 
         </header>
         <main class="mail-main-content">
           <MailNav @openCreateModal="openCreateModal"
           @filter = "setFilterBy"
+          :emails="emails"
           />
 
           <MailCreate @addNewEmail="addNewEmail" @closeModal="closeModal" v-if="isModalOpen"/>
@@ -38,7 +36,7 @@ export default {
         </main> 
         
         <MailDetails
-        v-if="selectedEmail"
+        v-if="isSelectedEmail"
         :email="selectedEmail" 
         />
     
@@ -46,6 +44,7 @@ export default {
   data() {
     return {
       selectedEmail: null,
+      isSelectedEmail: false,
       isModalOpen: false,
       emails: [],
       filterBy: {
@@ -61,9 +60,10 @@ export default {
     setFilterBy(filterBy) {
       this.filterBy.status = filterBy
     },
-    showEmailDetails(emailId) {
-      this.selectedEmail = this.emails.find((email) => email.id === emailId)
-    },
+    // showEmailDetails(emailId) {
+    //   this.isSelectedEmail = true
+    //   this.selectedEmail = this.emails.find((email) => email.id === emailId)
+    // },
     toggelMarked(emailId) {
       this.email = this.emails.find((email) => email.id === emailId)
       this.email.isRead = !this.email.isRead
@@ -76,7 +76,6 @@ export default {
       this.isModalOpen = false
     },
     addNewEmail(to, title, body) {
-      if (!title || !body) return showErrorMsg('Error: Need to fill the lines')
       let date = new Date()
       const month = 'Mar'
       const day = date.getDay()
@@ -92,6 +91,9 @@ export default {
         from: 'momo@momo.com',
         to: to,
         status: 'sent',
+      }
+      if (!title || !body) {
+          newEmail.status = 'drafts' 
       }
       this.emails.unshift(newEmail)
       mailService.save(newEmail).then(() => {

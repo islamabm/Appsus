@@ -9,13 +9,8 @@ import AppBody from './cmps/AppBody.js'
 
 const options = {
   template: `
-        <!-- <section> -->
-            <!-- <AppHeader /> -->
-            <AppBody/>
             <RouterView />
-            <!-- <AppFooter /> -->
             <UserMsg />
-        <!-- </section> -->
     `,
   components: {
     AppHeader,

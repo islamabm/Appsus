@@ -24,7 +24,7 @@ export default {
       handelTxtLength() {
         if(!this.txt) return
         if (this.txt.length > 130) {
-          return this.txt.slice(0, 130) + '...'
+          return this.txt.slice(0, 120) + '...'
         } else {return this.txt} 
       },
     },

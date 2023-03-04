@@ -25,7 +25,7 @@ export default {
                 v-html="getSvg('settings')"></span>
               </div>
               
-            <router-link to="/body" class="back-home-button">Home</router-link>
+            <router-link to="/" class="back-home-button">Home</router-link>
             
 </header>
     `,

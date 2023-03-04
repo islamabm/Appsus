@@ -27,6 +27,10 @@ export default {
         },
         starEmail() {    
             this.email.isStar = !this.email.isStar
+
+            if(this.email.isStar) {
+                this.email.status = 'starred'
+            }else this.email.status = 'inbox'
             mailService.save(this.email)
         }
     },

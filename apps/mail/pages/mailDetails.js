@@ -1,11 +1,22 @@
+import { mailService } from "../service/mail.service.js"
+
 export default {
-    props: ['email'],
+    
     template: `
         <section class="email-details" >
-            <h2>{{ email.title }}</h2>
-            <p>{{ email.content }}</p>
-
+            <p class="subject">{{email.subject}}</p> 
+            <p>{{email.from}}</p>
+            <p>{{email.body}}</p>
         </section>
     `,
+    data() {
+        return {
+            email: none,
+        }
+    },
+    created() {
+        const { id } = this.$route.params
+        mailService.get(id).then(email => this.email = email)
+    },
 
 }

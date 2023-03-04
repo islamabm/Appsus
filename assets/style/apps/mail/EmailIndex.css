@@ -66,6 +66,7 @@
     background-color: rgba(225, 225, 225, 0.784);
 }
 
+
 .mail-main-content{
     display: grid;
     grid-template-columns: 10px 250px 1fr 10px;

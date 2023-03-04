@@ -10,10 +10,10 @@ const { createRouter, createWebHashHistory } = VueRouter
 const routerOptions = {
   history: createWebHashHistory(),
   routes: [
-    // {
-    //   path: '/',
-    //   component: HomePage,
-    // },
+    {
+      path: '/',
+      component: AppBody,
+    },
     {
       path: '/about',
       component: AboutUs,
@@ -32,10 +32,7 @@ const routerOptions = {
       path: '/keep',
       component: NoteIndex,
     },
-    {
-      path: '/body',
-      component: AppBody,
-    },
+
   ],
 }
 

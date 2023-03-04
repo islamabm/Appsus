@@ -2,7 +2,6 @@ import { utilService } from '../services/util.service.js'
 
 export default {
   template: `
-        <div v-if="isShown">
         <header class="body-header">
         <h1>Welcome To AppSus</h1>
         </header>
@@ -30,7 +29,6 @@ export default {
         <footer class="body-footer">
             <p>&copy; Coffeerights to Islam & Itay </p>
         </footer>
-        </div>
     `,
   data() {
     return {
