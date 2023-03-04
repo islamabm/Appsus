@@ -36,3 +36,7 @@
 .email-sent-at{
     margin-left: 1em;
 }
+
+.starred {
+    fill: yellow;
+}

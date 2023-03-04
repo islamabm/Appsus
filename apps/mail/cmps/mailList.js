@@ -5,7 +5,7 @@ import {svgService} from "../../../services/SVG.service.js"
 export default {
   props: ["emails"],
   template: `   
-            <ul class="mail-list" v-for="email in emails" :class="{'read':email.isRead}">
+            <ul class="mail-list" v-for="email in emails" :class="{'read':!email.isRead}">
                 <li @click="mark(email.id)">
                     <MailPreview :email="email"/>
                 <div class="email-preview-buttons">
@@ -32,7 +32,7 @@ export default {
     },
     getSvg(iconName) {
       return svgService.getMailSvg(iconName)
-  },
+    },
   },
   components: {
     MailPreview,

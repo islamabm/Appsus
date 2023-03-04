@@ -110,7 +110,7 @@ function _createEmails() {
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user@appsus.com',
-      status: 'inbox',
+      status: 'sent',
       },
       {
       id: utilService.makeId(),
@@ -158,7 +158,7 @@ function _createEmails() {
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user@appsus.com',
-      status: 'stared',
+      status: 'starred',
       },
       {
       id: utilService.makeId(),
@@ -170,7 +170,7 @@ function _createEmails() {
       removedAt: null,
       from: 'momo@momo.com',
       to: 'user@appsus.com',
-      status: 'stared',
+      status: 'starred',
       },
       {
       id: utilService.makeId(),

@@ -9,36 +9,41 @@ export default {
                 </span>
               <span class="mail-nav-text">Compose</span>
             </li>
+            
             <li @click="filter('inbox')">
             <span className="inbox" 
                 v-html="getSvg('inbox')">
                 </span>
                 <span class="mail-nav-text">Inbox</span>
             </li>
-		    <li @click="filter('stars')">
+		    
+            <li @click="filter('stars')">
             <span className="starFill" 
                 v-html="getSvg('starFill')">
                 </span>
                 <span class="mail-nav-text">Starred</span>
             </li>
-		    <li @click="filter('sent')">
+		    
+            <li @click="filter('sent')">
             <span className="sent" 
                 v-html="getSvg('sent')">
                 </span>
                 <span class="mail-nav-text">Sent</span>
             </li>
-		    <li>
+		    
+            <li @click="filter('drafts')">
             <span className="draftsFill" 
                 v-html="getSvg('draftsFill')">
                 </span>
                 <span class="mail-nav-text">Drafts</span>
             </li>
-		    <li @click="filter('trash')">
+		    
+            <li @click="filter('trash')">
             <span className="trash" 
                 v-html="getSvg('trash')">
                 </span>
                 <span class="mail-nav-text">Trash</span>
-            </li>
+              </li>
         </nav>
     `,
     data() {
@@ -61,7 +66,6 @@ export default {
     },
     filter(status){
       this.filterBy.status = status
-      console.log('clicked');
       this.$emit('filter',this.filterBy.status)
     }  
   },
