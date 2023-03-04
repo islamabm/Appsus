@@ -1,5 +1,5 @@
 import MailList from '../cmps/MailList.js'
-import MailFilter from '../../../apps/mail/cmps/mailFilter.js'
+import MailFilter from '../cmps/MailFilter.js'
 import MailNav from '../cmps/MailNav.js'
 import MailDetails from './MailDetails.js'
 import MailCreate from '../cmps/MailCreate.js'
